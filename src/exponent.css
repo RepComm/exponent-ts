@@ -1,0 +1,46 @@
+
+.exponent {
+  flex:1;
+  width:100%;
+  height:100%;
+}
+
+.exponent-panel {
+
+}
+
+.exponent-dark {
+  background-color: rgb(26, 26, 26);
+  color:rgb(97, 97, 97);
+}
+.exponent-dark:hover {
+  background-color: rgb(46, 46, 46);
+  color:rgb(112, 112, 112);
+}
+
+.exponent-medium {
+  background-color: rgb(53, 53, 53);
+  color:rgb(151, 151, 151);
+}
+.exponent-medium:hover {
+  background-color: rgb(66, 66, 66);
+  color:rgb(133, 133, 133);
+}
+
+.exponent-lite {
+  background-color: rgb(94, 94, 94);
+  color:rgb(255, 255, 255);
+}
+.exponent-lite:hover {
+  background-color: rgb(107, 107, 107);
+  color:rgb(212, 212, 212);
+}
+
+.exponent-grid {
+  display: grid;
+}
+
+.exponent-button {
+  border:none;
+  cursor:pointer;
+}
