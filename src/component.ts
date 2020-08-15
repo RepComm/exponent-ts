@@ -24,7 +24,12 @@ export default class Component {
     }
     return this;
   }
-
+  unmount (): Component {
+    if (this.element.parentElement) {
+      this.element.remove();
+    }
+    return this;
+  }
   /**Mounts child component or html element to this*/
   mountChild (child: Component|HTMLElement): Component {
     if (child instanceof HTMLElement) {

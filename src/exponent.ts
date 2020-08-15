@@ -46,6 +46,10 @@ export class Exponent extends Component {
     this.addClasses("exponent");
     return this;
   }
+  styleItem (item: string, value: any): Exponent {
+    this.element.style[item] = value;
+    return this;
+  }
 }
 
 export class Panel extends Exponent {
@@ -65,7 +69,7 @@ export class Grid extends Panel {
   }
   setColumnCount (columns: number): Grid {
     this.columns = columns;
-    this.element.style["grid-template-columns"] = `repeat(${columns}, 1fr)`;
+    this.styleItem("grid-template-columns", `repeat(${columns}, 1fr)`);
     return this;
   }
   getColumnCount (): number {
@@ -73,7 +77,7 @@ export class Grid extends Panel {
   }
   setRowCount (rows: number): Grid {
     this.rows = rows;
-    this.element.style["grid-template-rows"] = `repeat(${rows}, 1fr)`;
+    this.styleItem("grid-template-rows", `repeat(${rows}, 1fr)`);
     return this;
   }
   getRowCount (): number {
@@ -86,13 +90,13 @@ export class Grid extends Panel {
     let y = `${rowStart}`;
     if (rowEnd) x += `/${rowEnd}`;
 
-    e.element.style["grid-column"] = x;
-    e.element.style["grid-row"] = y;
+    e.styleItem("grid-column", x);
+    e.styleItem("grid-row", y);
     e.mount(this);
     return this;
   }
   setGap (gapStyle: string): Grid {
-    this.element.style["gap"] = gapStyle;
+    this.styleItem("gap", gapStyle);
     return this;
   }
 }
@@ -102,5 +106,48 @@ export class Button extends Exponent {
     super();
     this.make("button");
     this.addClasses("exponent-dark", "exponent-button");
+  }
+}
+
+export class DualPanel extends Panel {
+  direction: string = "left-to-right";
+  firstRatio: number = 1;
+  secondRatio: number = 1;
+  first: Panel;
+  second: Panel;
+
+  constructor () {
+    super();
+    this.addClasses("exponent-dual-panel");
+  }
+  onRatioUpdate () {
+    if (this.first) this.first.styleItem("flex", this.firstRatio);
+    if (this.second) this.second.styleItem("flex", this.secondRatio);
+  }
+  setRatio (first: number, second: number): DualPanel {
+    this.firstRatio = first;
+    this.secondRatio = second;
+    this.onRatioUpdate();
+    return this;
+  }
+  setDirection (dir: "row"|"row-reverse"|"column"|"column-reverse"): DualPanel {
+    this.direction = dir;
+    this.styleItem("flex-direction", dir);
+    return this;
+  }
+  clearElements (): DualPanel {
+    return this;
+  }
+  setElements (first: Exponent, second: Exponent): DualPanel {
+    if (this.first) this.first.unmount();
+    if (this.second) this.second.unmount();
+
+    this.first = first;
+    this.second = second;
+
+    first.mount(this);
+    second.mount(this);
+    this.onRatioUpdate();
+    return this;
   }
 }
