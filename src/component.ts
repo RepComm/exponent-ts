@@ -1,41 +1,44 @@
 
-import { on, off, make, rect } from  "./aliases.js";
+import { on, off, make, rect } from "./aliases.js";
 
-/**An abstraction on DOM js APIs to make working
- * with the web page less of a pain
- * 
- * And no, I don't like jQuery
+interface ComponentForCallback {
+  (self: Component, index: number):void;
+}
+
+/**DOM abstraction because default API sucks
  * 
  * @author Jonathan Crowder
  */
 export default class Component {
-  element: HTMLElement|undefined;
+  element: HTMLElement | undefined;
 
   constructor() {
   }
   /**Mounts the component to a parent HTML element*/
-  mount(parent: Component|HTMLElement): Component {
+  mount(parent: Component | HTMLElement): Component {
     if (parent instanceof HTMLElement) {
       parent.appendChild(this.element);
     } else if (parent instanceof Component) {
+      // parent.mountChild(this);
       parent.element.appendChild(this.element);
     } else {
       throw "Cannot append to parent because its not a Component or HTMLElement";
     }
     return this;
   }
-  unmount (): Component {
+  unmount(): Component {
     if (this.element.parentElement) {
       this.element.remove();
     }
     return this;
   }
   /**Mounts child component or html element to this*/
-  mountChild (child: Component|HTMLElement): Component {
+  mountChild(child: Component | HTMLElement): Component {
     if (child instanceof HTMLElement) {
       this.element.appendChild(child);
     } else if (child instanceof Component) {
-      this.element.appendChild(child.element);
+      // this.element.appendChild(child.element);
+      child.mount(this);
     } else {
       throw "Cannot append child because its not a Component or HTMLElement";
     }
@@ -43,7 +46,7 @@ export default class Component {
   }
 
   /**Listen to events on this componenet's element*/
-  on(type: string, callback: EventListener, options:any|undefined): Component {
+  on(type: string, callback: EventListener, options?: any): Component {
     on(this.element, type, callback, options);
     return this;
   }
@@ -55,17 +58,17 @@ export default class Component {
   }
 
   /**Set the element id*/
-  id (str: string): Component {
+  id(str: string): Component {
     this.element.id = str;
     return this;
   }
   /**Add CSS classes*/
-  addClasses (...classnames: string[]): Component {
+  addClasses(...classnames: string[]): Component {
     this.element.classList.add(...classnames);
     return this;
   }
   /**Remove CSS classes*/
-  removeClasses (...classnames: string[]): Component {
+  removeClasses(...classnames: string[]): Component {
     this.element.classList.remove(...classnames);
     return this;
   }
@@ -84,62 +87,71 @@ export default class Component {
   }
 
   /**Sets the textContent of this element*/
-  textContent (str: string): Component {
+  textContent(str: string): Component {
     this.element.textContent = str;
     return this;
   }
 
   /**Adds the .hide class to the element*/
-  hide (): Component {
+  hide(): Component {
     this.addClasses("hide");
     return this;
   }
   /**Removes the .hide class from the element*/
-  show (): Component {
+  show(): Component {
     this.removeClasses("hide");
     return this;
   }
 
   /**Sets the style.left prop*/
-  set left (x: any) {
+  set left(x: any) {
     this.element.style.left = x;
   }
 
   /**Sets the style.top prop*/
-  set top (y: any) {
+  set top(y: any) {
     this.element.style.top = y;
   }
 
   /**Alias of getBoundingClientRect */
-  get rect (): DOMRect {
+  get rect(): DOMRect {
     return rect(this.element);
   }
 
   /**@param {string} type of input.type*/
-  inputType (t: string): Component {
+  inputType(t: string): Component {
     if (!(this.element instanceof HTMLInputElement)) throw "type is meant to be set when the element is an HTMLInputElement";
     (this.element as HTMLInputElement).type = t;
     return this;
   }
   /**Removes children components*/
-  removeChildren (): Component {
+  removeChildren(): Component {
     while (this.element.lastChild) {
       this.element.lastChild.remove();
     }
     return this;
   }
   /**Sets the background image*/
-  backgroundImage (url: string): Component {
+  backgroundImage(url: string): Component {
     this.element.style["background-image"] = `url(${url})`;
     return this;
   }
 
-  click () {
+  click() {
     this.element.click();
   }
-
-  clip (path: string): Component {
+  clip(path: string): Component {
     this.element.style["clip-path"] = path;
+    return this;
+  }
+  styleItem(item: string, value: any): Component {
+    this.element.style[item] = value;
+    return this;
+  }
+  for (start: number, count: number, cb: ComponentForCallback): Component {
+    for (let i=start; i<count+1; i++) {
+      cb(this, i);
+    }
     return this;
   }
 }

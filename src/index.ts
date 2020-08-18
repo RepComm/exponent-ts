@@ -1,43 +1,59 @@
 
 import Component from "./component.js";
-import { get } from "./aliases.js";
+import { get, on } from "./aliases.js";
 
-import { Grid, Exponent, Button, DualPanel } from "./exponent.js";
+import {
+  Button,
+  DualPanel,
+  ContextPanel,
+  ListPanel,
+  ImagePanel,
+  OverlayPanel,
+  Grid
+} from "./mod.js";
 
 const container = new Component()
   .useNative(get("container"));
 
-const rows = 10;
+const root = new ContextPanel();
+root.mount(container);
+root.addContext(
+  "menu",
+  new DualPanel()
+    .setElements(
+      new Button()
+        .textContent("Return to match")
+        .on("click", ()=>{
+          root.switchContext("game");
+        }) as Button,
+      new ListPanel()
+    )
+    .setRatio(1, 10)
+    .setDirection("column")
+);
 
-const grid = new Grid()
-  .setColumnCount(3)
-  .setRowCount(rows)
-  .setGap("2px")
-  .addClasses("exponent-lite")as Grid;
+root.addContext(
+  "game",
+  new OverlayPanel()
+  .setElements(
+    new Grid()
+    .setRowCount(3)
+    .setColumnCount(3)
+    .setCell(
+      new Button()
+        .textContent("UI") as Button,
+      2, 2
+    ),
+    new ImagePanel ()
+    .setImage("./images/helloworld.png")
+    .setInterpolation("crisp-edges")
+  )
+);
 
-for (let i=1; i<rows+1; i++) {
-  const btn = new Button()
-  .clip("polygon(0 70%, 8% 100%, 100% 100%, 100% 0, 0 0)")
-  .textContent(`item ${i}`) as Exponent;
+root.switchContext("menu");
 
-  grid.setCell(btn, 2, i);
-}
-
-const dualPanel = new DualPanel()
-  .mount(container) as DualPanel;
-
-const btnFirst = new Button()
-  .textContent("first") as Button;
-
-const panel2 = new DualPanel()
-  .setDirection("column")
-  .setRatio(3, 1);
-
-const btnSecond = new Button()
-  .textContent("second")as Button;
-
-
-panel2.setElements(btnSecond, grid);
-
-dualPanel.setElements(btnFirst, panel2)
-.setRatio(1, 3);
+on(window, "keyup", (evt: KeyboardEvent) => {
+  if (evt.key === "Escape") {
+    root.switchContext("menu");
+  }
+});
