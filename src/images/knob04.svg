@@ -8,19 +8,19 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:version="1.0 (b51213c273, 2020-08-10)"
-   sodipodi:docname="knob01.svg"
+   sodipodi:docname="knob04.svg"
    width="10pt"
    height="10pt"
    viewBox="0 0 3.5277777 3.5277776"
    version="1.1"
    id="svg8">
   <sodipodi:namedview
-     inkscape:current-layer="svg8"
+     inkscape:current-layer="g885"
      inkscape:window-maximized="1"
      inkscape:window-y="27"
      inkscape:window-x="72"
      inkscape:cy="6.8364109"
-     inkscape:cx="6.6893129"
+     inkscape:cx="6.1217968"
      inkscape:zoom="27.311999"
      showgrid="false"
      id="namedview6"
@@ -45,25 +45,28 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <circle
-     r="1.6001793"
-     cy="1.7638887"
-     cx="1.7638887"
-     id="path852"
-     style="fill:#151515;fill-opacity:1;stroke:#9a9a9a;stroke-width:0.03527778;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <circle
-     cy="1.7638888"
-     cx="1.7638888"
-     id="path834"
-     style="fill:none;fill-opacity:1;stroke:#d8d8d8;stroke-width:0.0352778;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.9921568"
-     r="0.86163354" />
-  <path
-     sodipodi:nodetypes="cc"
-     id="path854"
-     d="M 1.7638889,0.88570282 V 0.32220828"
-     style="fill:none;stroke:#d3d3d3;stroke-width:0.03527778;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <g
+     id="g885"
+     transform="matrix(1.5513061,0,0,1.5513061,-0.97244272,-0.94392242)">
+    <circle
+       style="fill:#1c1c1c;fill-opacity:1;stroke:none;stroke-width:0.080189;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path856"
+       cx="1.7638888"
+       cy="1.7455041"
+       r="0.81197059" />
+    <circle
+       style="fill:#07e271;fill-opacity:1;stroke:none;stroke-width:0.0474691;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="circle878"
+       cx="1.7638888"
+       cy="1.7455041"
+       r="0.48065856" />
+    <path
+       style="fill:none;stroke:#07e271;stroke-width:0.15875;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 1.78948,1.3064003 V 0.92782862"
+       id="path880" />
+  </g>
 </svg>

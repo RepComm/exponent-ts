@@ -3,6 +3,15 @@ import { on } from "../aliases.js";
 import { clamp, lerp, inverseLerp, ndist } from "../math/general.js";
 import { Panel, SquarePanel } from "../mod.js";
 
+const knobImages = [
+  "./images/knob01.svg",
+  "./images/knob02.svg",
+  "./images/knob03.svg",
+  "./images/knob04.svg",
+  "./images/knob05.svg",
+  "./images/knob06.svg"
+];
+
 export class Knob extends SquarePanel {
   grab: Panel;
   min: number = 0;
@@ -20,7 +29,8 @@ export class Knob extends SquarePanel {
     this.grab = new Panel()
       .addClasses("exponent-knob-grab")
       .mount(this) as Panel;
-    this.setImage("./images/knob01.svg");
+    let ind = Math.floor(Math.random()*knobImages.length);
+    this.setImage(knobImages[ind]);
     this.grab.on("mousedown", (evt) => {
       this.turning = true;
     });
