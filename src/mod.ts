@@ -8,6 +8,7 @@ import { ImagePanel } from "./exponents/imagepanel.js";
 import { ListPanel } from "./exponents/listpanel.js";
 import { OverlayPanel } from "./exponents/overlaypanel.js";
 import { SquarePanel } from "./exponents/squarepanel.js";
+import { Knob } from "./exponents/knob.js";
 
 export {
   Button,
@@ -18,6 +19,7 @@ export {
   ImagePanel,
   ListPanel,
   OverlayPanel,
-  SquarePanel
+  SquarePanel,
+  Knob
 };
 

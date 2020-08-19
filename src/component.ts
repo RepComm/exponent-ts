@@ -133,7 +133,8 @@ export default class Component {
   }
   /**Sets the background image*/
   backgroundImage(url: string): Component {
-    this.element.style["background-image"] = `url(${url})`;
+    this.styleItem("background-image", `url(${url})`);
+    // this.element.style["background-image"] = `url(${url})`;
     return this;
   }
 

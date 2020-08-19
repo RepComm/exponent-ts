@@ -1,6 +1,5 @@
 
 import Component from "./component.js";
-
 export const EMPTY_COMPONENT = new Component().make("span").textContent("Empty Component");
 
 /**Base component for exponent library
@@ -8,6 +7,8 @@ export const EMPTY_COMPONENT = new Component().make("span").textContent("Empty C
  */
 export class Exponent extends Component {
   mutObserver: MutationObserver;
+  /**Doesn't have to be used by class extensions*/
+  enabled: boolean = true;
   constructor () {
     super();
     this.mutObserver = new MutationObserver(this.onElementMutate);

@@ -7,7 +7,8 @@ export class ImagePanel extends Panel {
     this.setStretchRule("fit-width");
   }
   setImage (url: string): ImagePanel {
-    this.styleItem("background-image", `url(${url})`);
+    this.backgroundImage(url);
+    // this.styleItem("background-image", `url(${url})`);
     return this;
   }
   setInterpolation (rule: "crisp-edges"|"optimise-quality"|"optimise-speed"): ImagePanel {
