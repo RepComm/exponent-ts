@@ -16,16 +16,20 @@ import {
 const container = new Component()
   .useNative(get("container"));
 
-let width = 9;
-let height = 6;
+let width = 6;
+let height = 3;
 const grid = new Grid()
   .setColumnCount(width)
   .setRowCount(height)
-  .setGap("2px")
+  .setGap("0.5em")
   .mount(container) as Grid;
 for (let x=1; x<width+1; x++) {
   for (let y=1; y<height+1; y++) {
-    grid.setCell(new Knob(), x, y);
+    let k = new Knob();
+    if (Math.random() > 0.5) {
+      k.step = 0.05;
+    }
+    grid.setCell(k, x, y);
   }
 }
 

@@ -32,3 +32,19 @@ export const lerp = (from: number, to: number, by: number): number => {
 export const inverseLerp = (from: number, to: number, value: number): number => {
   return (value - from) / (to - from);
 }
+
+export const dist = (x1: number, y1: number, x2: number, y2: number): number => Math.sqrt(
+  Math.pow(x1 - x2, 2) +
+  Math.pow(y1 - y2, 2)
+);
+
+export const roundToNext = (n, next)=> {
+  let isNeg = (n < 0);
+  if (isNeg) { n -= next };
+  let resto = n % next;
+  if (resto <= (next)) {
+    return n - resto;
+  } else {
+    return n + next - resto;
+  }
+}
