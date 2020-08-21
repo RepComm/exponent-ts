@@ -58,3 +58,8 @@
   background-size:contain;
   cursor:grab;
 }
+
+.exponent-drawing {
+  width:100%;
+  height:100%;
+}

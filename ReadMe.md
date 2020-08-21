@@ -23,5 +23,4 @@
  - Track object properties
 
 ## Visuals
-[knob grid - youtube](https://youtu.be/CLQ1eUSsFeI)
-
+![img](./example.png)

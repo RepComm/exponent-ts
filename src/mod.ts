@@ -9,6 +9,7 @@ import { ListPanel } from "./exponents/listpanel.js";
 import { OverlayPanel } from "./exponents/overlaypanel.js";
 import { SquarePanel } from "./exponents/squarepanel.js";
 import { Knob } from "./exponents/knob.js";
+import { Drawing } from "./exponents/drawing.js";
 
 export {
   Button,
@@ -20,6 +21,7 @@ export {
   ListPanel,
   OverlayPanel,
   SquarePanel,
-  Knob
+  Knob,
+  Drawing
 };
 

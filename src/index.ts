@@ -1,81 +1,56 @@
 
 import Component from "./component.js";
-import { get, on } from "./aliases.js";
+import { get } from "./aliases.js";
+import { radians } from "./math/general.js";
 
 import {
-  Button,
-  DualPanel,
-  ContextPanel,
-  ListPanel,
-  ImagePanel,
-  OverlayPanel,
-  Grid,
-  Knob
+  Drawing, OverlayPanel, ImagePanel, Grid
 } from "./mod.js";
 
 const container = new Component()
   .useNative(get("container"));
 
-let width = 6;
-let height = 3;
-const grid = new Grid()
-  .setColumnCount(width)
-  .setRowCount(height)
-  .setGap("0.5em")
-  .mount(container) as Grid;
-for (let x=1; x<width+1; x++) {
-  for (let y=1; y<height+1; y++) {
-    let k = new Knob();
-    if (Math.random() > 0.5) {
-      k.step = 0.05;
-    }
-    grid.setCell(k, x, y);
-  }
-}
+const root = new OverlayPanel()
+.mount(container) as OverlayPanel;
 
-// const root = new ContextPanel();
-// root.mount(container);
-// root.addContext(
-//   "menu",
-//   new DualPanel()
-//     .setElements(
-//       new Button()
-//         .textContent("Return to match")
-//         .on("click", ()=>{
-//           root.switchContext("game");
-//         }) as Button,
-//       new ListPanel()
-//     )
-//     .setRatio(1, 10)
-//     .setDirection("column")
-// );
+const bg = new ImagePanel()
+.setImage("./images/helloworld.png");
 
-// root.addContext(
-//   "game",
-//   new OverlayPanel()
-//   .setElements(
-//     new Grid()
-//     .setRowCount(3)
-//     .setColumnCount(3)
-//     .setCell(
-//       new Button()
-//         .textContent("UI") as Button,
-//       2, 2
-//     )
-//     .setCell(
-//       new Knob(),
-//       1, 1
-//     ),
-//     new ImagePanel ()
-//     .setImage("./images/helloworld.png")
-//     .setInterpolation("crisp-edges")
-//   )
-// );
+const fg = new Grid()
+  .setColumnCount(3)
+  .setRowCount(3);
 
-// root.switchContext("menu");
+root.setElements(fg, bg);
 
-// on(window, "keyup", (evt: KeyboardEvent) => {
-//   if (evt.key === "Escape") {
-//     root.switchContext("menu");
-//   }
-// });
+const draw = new Drawing()
+.setHandlesResize(true);
+
+fg.setCell(draw, 1, 3);
+
+fg.setCell(
+  new ImagePanel()
+  .setImage("./images/hud-p-mid.svg")
+  .styleItem("background-repeat", "no-repeat")
+  .styleItem("background-position", "50% 0%") as ImagePanel,
+  2, 1
+);
+
+const RAD_360 = radians(360);
+
+draw.addRenderPass((ctx, drawing)=>{
+  ctx.save();
+
+  ctx.fillStyle = "white";
+  ctx.beginPath();
+  ctx.ellipse(
+    drawing.width/2,
+    drawing.height/2,
+    drawing.width/2,
+    drawing.height/2,
+    0,
+    0,
+    RAD_360
+  );
+  ctx.fill();
+  ctx.restore();
+});

@@ -8,10 +8,21 @@ export const EMPTY_COMPONENT = new Component().make("span").textContent("Empty C
 export class Exponent extends Component {
   mutObserver: MutationObserver;
   /**Doesn't have to be used by class extensions*/
-  enabled: boolean = true;
+  enabled: boolean = false;
   constructor () {
     super();
     this.mutObserver = new MutationObserver(this.onElementMutate);
+    this.setEnabled(true);
+  }
+  getEnabled (): boolean {
+    return this.enabled;
+  }
+  setEnabled (enable: boolean): Exponent {
+    if (this.getEnabled()) return this;
+    this.enabled = enable;
+    this.onEnable();
+  }
+  onEnable () {
   }
   make (type: string): Exponent {
     super.make(type);
