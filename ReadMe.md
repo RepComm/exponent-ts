@@ -1,5 +1,5 @@
 # exponent-ts
-
+A nice UI library, extending Component.ts for use in [OpenBF](https://github.com/openbf-project)
 ## Implemented Components
  - Grid
  - Button
@@ -10,6 +10,7 @@
  - OverlayPanel - useful for rendering GUI on top a canvas
  - Panel - regular panel
  - SquarePanel (partial) - content is always a square that takes up the max available space
+ - Drawing - canvas component w/ built in auto-resize, render loop, render passes, helper methods
 
 ## Planned Components
  - List
