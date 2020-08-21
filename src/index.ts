@@ -4,7 +4,7 @@ import { get } from "./aliases.js";
 import { radians } from "./math/general.js";
 
 import {
-  Drawing, OverlayPanel, ImagePanel, Grid
+  Drawing, OverlayPanel, ImagePanel, Grid, SquarePanel
 } from "./mod.js";
 
 const container = new Component()
@@ -22,10 +22,13 @@ const fg = new Grid()
 
 root.setElements(fg, bg);
 
+const square = new SquarePanel();
+
+fg.setCell(square, 1, 3);
+
 const draw = new Drawing()
 .setHandlesResize(true);
-
-fg.setCell(draw, 1, 3);
+square.mountChild(draw);
 
 fg.setCell(
   new ImagePanel()
