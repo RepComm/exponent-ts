@@ -26,14 +26,10 @@ export class Grid extends Panel {
     return this.rows;
   }
   setCell (e: Exponent, columnStart: number, rowStart: number, columnEnd?: number, rowEnd?: number): Grid {
-    let x = `${columnStart}`;
-    if (columnEnd) x += `/${columnEnd}`;
-    
-    let y = `${rowStart}`;
-    if (rowEnd) x += `/${rowEnd}`;
-
-    e.styleItem("grid-column", x);
-    e.styleItem("grid-row", y);
+    e.styleItem("grid-column-start", columnStart);
+    e.styleItem("grid-row-start", rowStart);
+    if (columnEnd) e.styleItem("grid-column-end", columnEnd);
+    if (rowEnd) e.styleItem("grid-row-end", rowEnd);
     e.mount(this);
     return this;
   }

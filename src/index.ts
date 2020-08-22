@@ -4,7 +4,7 @@ import { get } from "./aliases.js";
 import { radians } from "./math/general.js";
 
 import {
-  Drawing, OverlayPanel, ImagePanel, Grid, SquarePanel
+  Drawing, OverlayPanel, ImagePanel, Grid, SquarePanel, Knob, ListPanel
 } from "./mod.js";
 
 const container = new Component()
@@ -17,8 +17,8 @@ const bg = new ImagePanel()
 .setImage("./images/helloworld.png");
 
 const fg = new Grid()
-  .setColumnCount(3)
-  .setRowCount(3);
+.setColumnCount(3)
+.setRowCount(3);
 
 root.setElements(fg, bg);
 
@@ -58,3 +58,20 @@ draw.addRenderPass((ctx, drawing)=>{
   ctx.fill();
   ctx.restore();
 });
+// fg.styleItem("pointer-events","none");
+bg.on("mousedown", (evt)=>{
+  console.log("draw");
+});
+
+const maplist = new ListPanel()
+.styleItem("background-color", "#333355")
+.for(1, 10, (self, index)=>{
+  self.mountChild(
+    new Knob()
+  );
+}) as ListPanel;
+
+fg.setCell(
+  maplist,
+  2, 2, 2, 3
+);

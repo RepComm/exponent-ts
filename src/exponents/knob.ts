@@ -81,10 +81,9 @@ export class Knob extends SquarePanel {
      */
 
     //Clamp the input
-    this.prevalue = v;
-    // this.value = clamp(this.prevalue, this.min, this.max);
+    this.prevalue = clamp(v, this.min, this.max);
 
-    this.value = clamp(this.prevalue, this.min, this.max);
+    this.value = this.prevalue;
     if (this.step != 0) {
       this.value = roundToNext(
         this.value,

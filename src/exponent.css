@@ -48,10 +48,6 @@
   cursor:pointer;
 }
 
-.exponent-knob {
-
-}
-
 .exponent-knob-grab {
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -64,8 +60,15 @@
   height:100%;
 }
 
-.exponent-square {
-}
 .exponent-square-container {
   position: absolute;
+}
+
+.exponent-list {
+  display: flex;
+  flex-wrap:wrap;
+  /* overflow:hidden; */
+}
+.exponent-list>* {
+  flex:1;
 }
