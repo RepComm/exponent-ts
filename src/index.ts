@@ -22,7 +22,8 @@ const fg = new Grid()
 
 root.setElements(fg, bg);
 
-const square = new SquarePanel();
+const square = new SquarePanel()
+.setAlign("left", "bottom");
 
 fg.setCell(square, 1, 3);
 
@@ -32,10 +33,10 @@ square.mountChild(draw);
 
 fg.setCell(
   new ImagePanel()
-  .setImage("./images/hud-p-mid.svg")
+  .setImage("./images/hud.svg")
   .styleItem("background-repeat", "no-repeat")
   .styleItem("background-position", "50% 0%") as ImagePanel,
-  2, 1
+  1, 1, 4
 );
 
 const RAD_360 = radians(360);
@@ -43,7 +44,7 @@ const RAD_360 = radians(360);
 draw.addRenderPass((ctx, drawing)=>{
   ctx.save();
 
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "#374e6d";
   ctx.beginPath();
   ctx.ellipse(
     drawing.width/2,

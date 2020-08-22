@@ -16,6 +16,9 @@ export class SquarePanel extends Panel {
   /**Calculated y offset of container*/
   cy: number = 0;
 
+  alignHorizontal: "left"|"right"|"center" = "center";
+  alignVertical: "top"|"bottom"|"center" = "center";
+
   constructor () {
     super();
     this.addClasses("exponent-square");
@@ -52,10 +55,22 @@ export class SquarePanel extends Panel {
     //Handle centering coords
     if (wIsBigger) {
       this.cy = 0; //Reset offset
-      this.cx = Math.floor(gap / 2); //move over by half gap
+      if (this.alignHorizontal == "center") {
+        this.cx = Math.floor(gap / 2); //move over by half gap
+      } else if (this.alignHorizontal == "left") {
+        this.cx = 0;
+      } else {
+        this.cx = Math.floor(gap);
+      }
     } else {
       this.cx = 0; //Reset offset
-      this.cy = Math.floor(gap / 2); //move over by half gap
+      if (this.alignVertical == "center") {
+        this.cy = Math.floor(gap / 2); //move over by half gap
+      } else if (this.alignVertical == "top") {
+        this.cy = 0;
+      } else {
+        this.cy = Math.floor(gap);
+      }
     }
 
     //Apparently this, and position:absolute works..
@@ -79,6 +94,11 @@ export class SquarePanel extends Panel {
       this.calcChildSize();
       this.applyChildSize();
     }, 100);
+    return this;
+  }
+  setAlign (hor:"left"|"right"|"center", ver:"top"|"bottom"|"center"): SquarePanel {
+    this.alignHorizontal = hor;
+    this.alignVertical = ver;
     return this;
   }
 }
