@@ -37,9 +37,10 @@ export class CircleSet<T> {
    * @param item
    */
   has (item: T): boolean {
-    for (let i=0; i<this.internal.length; i++) {
-      if (this.internal[i] === item) return true;
-    }
-    return false;
+    return this.internal.includes(item);
+    // for (let i=0; i<this.internal.length; i++) {
+    //   if (this.internal[i] === item) return true;
+    // }
+    // return false;
   }
 }
