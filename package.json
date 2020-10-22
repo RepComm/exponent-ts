@@ -2,7 +2,9 @@
   "name": "exponent-ts",
   "version": "1.0.0",
   "description": "exponent-ts",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "files": ["lib/**/*"],
+  "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RepComm/exponent-ts.git"
@@ -27,5 +29,6 @@
   },
   "scripts": {
     "build": "babel src --extensions '.ts' --copy-files -d lib"
-  }
+  },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }

@@ -16,11 +16,20 @@ const root = new OverlayPanel()
 const bg = new ImagePanel()
 .setImage("./images/helloworld.png");
 
+let width = 10;
+let height = 6;
+
 const fg = new Grid()
 .setColumnCount(3)
 .setRowCount(3);
 
 root.setElements(fg, bg);
+
+// for (let x=1; x<width+1; x++) {
+//   for (let y=1; y<height+1; y++) {
+//     fg.setCell(new Knob(), x, y);
+//   }
+// }
 
 const square = new SquarePanel()
 .setAlign("left", "bottom");

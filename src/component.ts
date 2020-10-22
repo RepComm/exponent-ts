@@ -4,7 +4,7 @@ import { on, off, make, rect } from "./aliases.js";
 const COMPONENT_NAMESPACE = "component-namespace";
 
 interface ComponentForCallback {
-  (self: Component, index: number):void;
+  (self: Component, index: number): void;
 }
 
 interface RegisteredEvent {
@@ -55,11 +55,11 @@ export default class Component {
   /**Listen to events on this componenet's element*/
   on(type: string, callback: EventListener, options?: any): Component {
     on(this.element, type, callback, options);
-    this.eventListeners.push({type, callback});
+    this.eventListeners.push({ type, callback });
     return this;
   }
 
-  getRegisteredEvents (type: string, cb: EventListener): RegisteredEvent[] {
+  getRegisteredEvents(type: string, cb: EventListener): RegisteredEvent[] {
     let result = new Array<RegisteredEvent>();
     for (let listener of this.eventListeners) {
       if (listener.type == type && listener.callback == cb) {
@@ -69,9 +69,9 @@ export default class Component {
     return result;
   }
 
-  deleteRegisteredEvents (type: string, cb: EventListener): Component {
+  deleteRegisteredEvents(type: string, cb: EventListener): Component {
     let listener: RegisteredEvent;
-    for (let i=0; i<this.eventListeners.length; i++) {
+    for (let i = 0; i < this.eventListeners.length; i++) {
       listener = this.eventListeners[i];
       if (type == listener.type && cb == listener.callback) {
         this.eventListeners.splice(i, 1);
@@ -103,20 +103,20 @@ export default class Component {
     return this;
   }
 
-  removeAllListeners (): Component {
+  removeAllListeners(): Component {
     for (let listener of this.eventListeners) {
       this.off(listener.type, listener.callback);
     }
     return this;
   }
 
-  static assignComponentToNative (native: HTMLElement, component: Component) {
+  static assignComponentToNative(native: HTMLElement, component: Component) {
     native[COMPONENT_NAMESPACE] = {
-      component:component
+      component: component
     };
   }
 
-  static removeComponentFromNative (native: HTMLElement) {
+  static removeComponentFromNative(native: HTMLElement) {
     native[COMPONENT_NAMESPACE] = undefined;
   }
 
@@ -205,17 +205,17 @@ export default class Component {
     this.element.style[item] = value;
     return this;
   }
-  for (start: number, count: number, cb: ComponentForCallback): Component {
-    for (let i=start; i<count+1; i++) {
+  for(start: number, count: number, cb: ComponentForCallback): Component {
+    for (let i = start; i < count + 1; i++) {
       cb(this, i);
     }
     return this;
   }
 
-  static nativeIsComponent (element: HTMLElement): boolean {
+  static nativeIsComponent(element: HTMLElement): boolean {
     return element[COMPONENT_NAMESPACE] != undefined && element[COMPONENT_NAMESPACE] != null;
   }
-  static nativeToComponent (element: HTMLElement): Component {
+  static nativeToComponent(element: HTMLElement): Component {
     if (!Component.nativeIsComponent(element)) throw `No component found in native ${element}`;
     return element[COMPONENT_NAMESPACE].component;
   }

@@ -1,5 +1,6 @@
 
 import { Panel } from "./panel.js";
+import { Exponent } from "../exponent.js";
 
 export class ListPanel extends Panel {
   mode: "vertical"|"horizontal" = "vertical";
@@ -24,6 +25,14 @@ export class ListPanel extends Panel {
   setItemViewRatio (ratio: number): ListPanel {
     this.itemViewRatio = ratio;
     
+    return this;
+  }
+  hasItem (item: Exponent): boolean {
+    throw "Not implemented yet"; //TODO - implement
+  }
+  addItem (item: Exponent): ListPanel {
+    if (this.hasItem(item)) throw "Cannot add item more than once";
+        
     return this;
   }
 }
