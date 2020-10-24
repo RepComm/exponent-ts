@@ -15,21 +15,32 @@ const knobImages = [
 
 export class Knob extends SquarePanel {
   grab: Panel;
-  min: number = 0;
-  max: number = 1;
-  minTurns: number = -0.5;
-  maxTurns: number = 1.5;
-  value: number = 0;
-  prevalue: number = 0;
-  turning: boolean = false;
-  turningx: number = 0;
-  turningy: number = 0;
-  step: number = 0;
+  min: number;
+  max: number;
+  minTurns: number;
+  maxTurns: number;
+  value: number;
+  prevalue: number;
+  turning: boolean;
+  turningx: number;
+  turningy: number;
+  step: number;
 
   static sensitivity: number = 0.005;
 
   constructor() {
     super();
+    this.min = 0;
+    this.max = 1;
+    this.minTurns = -0.5;
+    this.maxTurns = 1.5;
+    this.value = 0;
+    this.prevalue = 0;
+    this.turning = false;
+    this.turningx = 0;
+    this.turningy = 0;
+    this.step = 0;
+
     this.addClasses("exponent-knob");
     this.grab = new Panel()
       .addClasses("exponent-knob-grab")

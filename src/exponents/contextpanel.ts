@@ -10,12 +10,13 @@ import Component from "../component.js";
  * 
  */
 export class ContextPanel extends Panel {
-  contexts: Map<string, Component> = new Map();
+  contexts: Map<string, Component>;
   currentContext: Component;
   currentContextId: string;
   memory: Array<string>;
   constructor () {
     super();
+    this.contexts = new Map();
   }
   addContext (id: string, ctx: Component): ContextPanel {
     this.contexts.set(id, ctx);

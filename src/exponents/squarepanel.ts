@@ -2,25 +2,35 @@
 import Component from "../component.js";
 import { Panel } from "../mod.js";
 
+export type SquarePanelAlignH = "left"|"right"|"center";
+export type SquarePanelAlignV = "top"|"bottom"|"center";
+
 /**A panel whose child is always squarely fit inside
  */
 export class SquarePanel extends Panel {
   /**The element that is actually square*/
-  container: Panel = new Panel();
+  container: Panel;
   onResize: EventListener;
 
   /**Length of side*/
-  length: number = 0;
+  length: number;
   /**Calculated x offset of container*/
-  cx: number = 0;
+  cx: number;
   /**Calculated y offset of container*/
-  cy: number = 0;
+  cy: number;
 
-  alignHorizontal: "left"|"right"|"center" = "center";
-  alignVertical: "top"|"bottom"|"center" = "center";
+  alignHorizontal: SquarePanelAlignH;
+  alignVertical: SquarePanelAlignV;
 
   constructor () {
     super();
+    this.container = new Panel();
+    this.length = 0;
+    this.cx = 0;
+    this.cy = 0;
+    this.alignVertical = "center";
+    this.alignHorizontal = "center";
+
     this.addClasses("exponent-square");
 
     this.onResize = ()=>{
@@ -96,7 +106,7 @@ export class SquarePanel extends Panel {
     }, 100);
     return this;
   }
-  setAlign (hor:"left"|"right"|"center", ver:"top"|"bottom"|"center"): SquarePanel {
+  setAlign (hor:SquarePanelAlignH, ver:SquarePanelAlignV): SquarePanel {
     this.alignHorizontal = hor;
     this.alignVertical = ver;
     return this;

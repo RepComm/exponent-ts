@@ -2,8 +2,10 @@
 import { Exponent } from "../exponent.js";
 import { Panel } from "./panel.js";
 
+export type DualPanelDirection = "row"|"row-reverse"|"column"|"column-reverse";
+
 export class DualPanel extends Panel {
-  direction: string = "left-to-right";
+  direction: DualPanelDirection;
   firstRatio: number = 1;
   secondRatio: number = 1;
   first: Exponent;
@@ -11,6 +13,7 @@ export class DualPanel extends Panel {
 
   constructor () {
     super();
+    this.direction = "row";
     this.addClasses("exponent-dual-panel");
   }
   onRatioUpdate () {
@@ -23,7 +26,7 @@ export class DualPanel extends Panel {
     this.onRatioUpdate();
     return this;
   }
-  setDirection (dir: "row"|"row-reverse"|"column"|"column-reverse"): DualPanel {
+  setDirection (dir: DualPanelDirection): DualPanel {
     this.direction = dir;
     this.styleItem("flex-direction", dir);
     return this;

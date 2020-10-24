@@ -1,15 +1,30 @@
 # exponent-ts
-A nice UI library, extending Component.ts for use in [OpenBF](https://github.com/openbf-project)
+My personal solution to user iterfaces w/ HTML
+
+## How this came to be
+What started as aliasing DOM APIs (_a nasty habbit.. I'm trying to quit_)
+evolved into writing reusable-ish classes<br>
+<br>
+Then I wanted a standard that would work in most scenarios<br>
+<br>
+Soon the `Component` class was born, and eventually switched to typescript.<br>
+<br>
+
+The Exponent part is just implemented versions of<br>
+standard components that I'll use in [openbf](https://github.com/openbf-project)
+
+The Component class itself is pretty small, and<br>
+essentially serves as a convenient chain-method wrapper for HTML elements
 ## Implemented Components
  - Grid
  - Button
- - DualPanel - render two elements using a ratio
- - ContextPanel - render a single element out of many, switching using string IDs
+ - DualPanel - render 2 elements w/ ratio
+ - ContextPanel - render single element from set, switch using string IDs
  - ImagePanel
- - Knob (mostly) - a rotation based input with configurable turn and value bounds
- - OverlayPanel - useful for rendering GUI on top a canvas
- - Panel - regular panel
- - SquarePanel (partial) - content is always a square that takes up the max available space
+ - Knob - a rotation based input with configurable turn and value bounds
+ - OverlayPanel - render two elements on top of eachother (GUI on top canvas)
+ - Panel - single element container
+ - SquarePanel (partial) - always square, even if child/parent element isn't
  - Drawing - canvas component w/ built in auto-resize, render loop, render passes, helper methods
 
 ## Planned Components
@@ -25,3 +40,9 @@ A nice UI library, extending Component.ts for use in [OpenBF](https://github.com
 
 ## Visuals
 ![img](./example.png)
+
+## Why does this exist
+1. I hate jQuery (and other UI frameworks)
+2. I love command chaining
+3. I want to reuse more / write less
+4. I needed it for https://github.com/openbf-project

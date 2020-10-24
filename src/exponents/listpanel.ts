@@ -2,16 +2,20 @@
 import { Panel } from "./panel.js";
 import { Exponent } from "../exponent.js";
 
+export type ListPanelMode = "vertical"|"horizontal";
+
 export class ListPanel extends Panel {
-  mode: "vertical"|"horizontal" = "vertical";
+  mode: ListPanelMode;
   /**how many items fit in view*/
-  itemViewRatio: number = 5;
+  itemViewRatio: number;
   constructor () {
     super();
+    this.mode = "vertical";
+    this.itemViewRatio = 5;
     this.addClasses("exponent-list");
     this.setMode("vertical");
   }
-  setMode (mode: "vertical"|"horizontal"): ListPanel {
+  setMode (mode: ListPanelMode): ListPanel {
     this.mode = mode;
     if (this.mode == "horizontal") {
       this.styleItem("overflow", "scroll hidden");

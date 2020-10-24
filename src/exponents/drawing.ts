@@ -7,17 +7,23 @@ export interface DrawingCallback {
 
 export class Drawing extends Exponent {
   context: CanvasRenderingContext2D;
-  renderPasses: Array<DrawingCallback> = new Array();
-  autoClear: boolean = true;
-  autoResize: boolean = false;
+  renderPasses: Array<DrawingCallback>;
+  autoClear: boolean;
+  autoResize: boolean;
   element: HTMLCanvasElement;
-  needsRedraw: boolean = true;
+  needsRedraw: boolean;
   frameCallback: FrameRequestCallback;
   onResize: EventListener;
-  pixelRatio: number = 1;
+  pixelRatio: number;
 
   constructor (ctxConfig?: CanvasRenderingContext2DSettings) {
     super();
+    this.renderPasses = new Array();
+    this.autoClear = true;
+    this.autoResize = false;
+    this.needsRedraw = true;
+    /**TODO - This should probably be Canvas pixel ratio?*/
+    this.pixelRatio = 1;
     this.make("canvas");
     this.addClasses("exponent-drawing");
     this.context = this.element.getContext("2d", ctxConfig);

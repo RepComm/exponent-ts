@@ -12,14 +12,15 @@ interface RegisteredEvent {
   type: string;
 }
 
-/**DOM abstraction because default API sucks
+/**DOM abstraction because DOM API sucks
  * 
  * @author Jonathan Crowder
  */
 export default class Component {
   element: HTMLElement | undefined;
-  private eventListeners: Array<RegisteredEvent> = new Array();
+  private eventListeners: Array<RegisteredEvent>;
   constructor() {
+    this.eventListeners = new Array();
   }
   /**Mounts the component to a parent HTML element*/
   mount(parent: Component | HTMLElement): Component {
@@ -58,7 +59,6 @@ export default class Component {
     this.eventListeners.push({ type, callback });
     return this;
   }
-
   getRegisteredEvents(type: string, cb: EventListener): RegisteredEvent[] {
     let result = new Array<RegisteredEvent>();
     for (let listener of this.eventListeners) {

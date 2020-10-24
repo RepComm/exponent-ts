@@ -1,9 +1,10 @@
 
 export class CircleSet<T> {
-  private internal: Array<T> = new Array();
-  private currentIndex: number = 0;
+  private internal: Array<T>;
+  private currentIndex: number;
   constructor () {
-
+    this.internal = new Array();
+    this.currentIndex = 0;
   }
   add (...items:Array<T>): CircleSet<T> {
     for (let item of items) {

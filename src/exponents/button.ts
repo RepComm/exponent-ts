@@ -2,9 +2,11 @@
 import { Exponent } from "../exponent.js";
 
 export class Button extends Exponent {
-  useType: "normal" | "back" | "foward" = "normal";
+  /**TODO - This should probably be abstracted*/
+  useType: "normal" | "back" | "foward";
   constructor() {
     super();
+    this.setUseType("normal");
     this.make("button");
     this.addClasses("exponent-dark", "exponent-button");
   }

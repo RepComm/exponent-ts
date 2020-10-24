@@ -3,10 +3,12 @@ import { Exponent } from "../exponent.js";
 import { Panel } from "./panel.js";
 
 export class Grid extends Panel {
-  columns: number = 3;
-  rows: number = 3;
+  columns: number;
+  rows: number;
   constructor () {
     super();
+    this.columns = 3;
+    this.rows = 3;
     this.addClasses("exponent-grid");
   }
   setColumnCount (columns: number): Grid {
