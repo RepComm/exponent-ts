@@ -1,6 +1,6 @@
 {
   "name": "@repcomm/exponent-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "exponent-ts",
   "main": "./lib/mod.js",
   "files": ["lib/**/*"],

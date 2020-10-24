@@ -1,4 +1,5 @@
 
+import Component from "./component.js";
 import { Panel } from "./exponents/panel.js";
 import { Button } from "./exponents/button.js";
 import { ContextPanel } from "./exponents/contextpanel.js";
@@ -62,6 +63,7 @@ export {
   OverlayPanel,
   SquarePanel,
   Knob,
-  Drawing
+  Drawing,
+  Component
 };
 
