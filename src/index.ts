@@ -4,8 +4,10 @@ import { get } from "./aliases.js";
 import { radians } from "./math/general.js";
 
 import {
-  Drawing, OverlayPanel, ImagePanel, Grid, SquarePanel, Knob, ListPanel
+  Drawing, OverlayPanel, ImagePanel, Grid, SquarePanel, Knob, ListPanel, runOnce
 } from "./mod.js";
+
+runOnce();
 
 const container = new Component()
   .useNative(get("container"));

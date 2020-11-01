@@ -6,14 +6,16 @@ export type DualPanelDirection = "row"|"row-reverse"|"column"|"column-reverse";
 
 export class DualPanel extends Panel {
   direction: DualPanelDirection;
-  firstRatio: number = 1;
-  secondRatio: number = 1;
+  firstRatio: number;
+  secondRatio: number;
   first: Exponent;
   second: Exponent;
 
   constructor () {
     super();
     this.direction = "row";
+    this.firstRatio = 1;
+    this.secondRatio = 1;
     this.addClasses("exponent-dual-panel");
   }
   onRatioUpdate () {

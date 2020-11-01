@@ -1,12 +1,12 @@
 {
   "name": "@repcomm/exponent-ts",
-  "version": "1.0.4",
+  "version": "1.0.9",
   "description": "exponent-ts",
   "main": "./lib/mod.js",
+  "types": "./lib/mod.d.ts",
   "files": [
     "lib/**/*"
   ],
-  "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RepComm/exponent-ts.git"

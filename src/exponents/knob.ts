@@ -26,7 +26,7 @@ export class Knob extends SquarePanel {
   turningy: number;
   step: number;
 
-  static sensitivity: number = 0.005;
+  static sensitivity;
 
   constructor() {
     super();
@@ -120,3 +120,4 @@ export class Knob extends SquarePanel {
     return this;
   }
 }
+Knob.sensitivity = 0.005;
