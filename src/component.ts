@@ -23,7 +23,7 @@ export default class Component {
     this.eventListeners = new Array();
   }
   /**Mounts the component to a parent HTML element*/
-  mount(parent: Component | HTMLElement): Component {
+  mount(parent: Component | HTMLElement): this {
     if (parent instanceof HTMLElement) {
       parent.appendChild(this.element);
     } else if (parent instanceof Component) {
@@ -34,14 +34,14 @@ export default class Component {
     }
     return this;
   }
-  unmount(): Component {
+  unmount(): this {
     if (this.element.parentElement) {
       this.element.remove();
     }
     return this;
   }
   /**Mounts child component or html element to this*/
-  mountChild(child: Component | HTMLElement): Component {
+  mountChild(child: Component | HTMLElement): this {
     if (child instanceof HTMLElement) {
       this.element.appendChild(child);
     } else if (child instanceof Component) {
@@ -54,7 +54,7 @@ export default class Component {
   }
 
   /**Listen to events on this componenet's element*/
-  on(type: string, callback: EventListener, options?: any): Component {
+  on(type: string, callback: EventListener, options?: any): this {
     on(this.element, type, callback, options);
     this.eventListeners.push({ type, callback });
     return this;
@@ -69,7 +69,7 @@ export default class Component {
     return result;
   }
 
-  deleteRegisteredEvents(type: string, cb: EventListener): Component {
+  deleteRegisteredEvents(type: string, cb: EventListener): this {
     let listener: RegisteredEvent;
     for (let i = 0; i < this.eventListeners.length; i++) {
       listener = this.eventListeners[i];
@@ -81,29 +81,29 @@ export default class Component {
   }
 
   /**Stop listening to an event on this componenet's element*/
-  off(type: string, callback: EventListener): Component {
+  off(type: string, callback: EventListener): this {
     off(this.element, type, callback);
     this.deleteRegisteredEvents(type, callback);
     return this;
   }
 
   /**Set the element id*/
-  id(str: string): Component {
+  id(str: string): this {
     this.element.id = str;
     return this;
   }
   /**Add CSS classes*/
-  addClasses(...classnames: string[]): Component {
+  addClasses(...classnames: string[]): this {
     this.element.classList.add(...classnames);
     return this;
   }
   /**Remove CSS classes*/
-  removeClasses(...classnames: string[]): Component {
+  removeClasses(...classnames: string[]): this {
     this.element.classList.remove(...classnames);
     return this;
   }
 
-  removeAllListeners(): Component {
+  removeAllListeners(): this {
     for (let listener of this.eventListeners) {
       this.off(listener.type, listener.callback);
     }
@@ -121,7 +121,7 @@ export default class Component {
   }
 
   /**Make the element of this component a type of HTMLElement*/
-  make(type: string): Component {
+  make(type: string): this {
     if (this.element) {
       this.removeAllListeners();
       Component.removeComponentFromNative(this.element);
@@ -132,7 +132,7 @@ export default class Component {
   }
 
   /**Use a native element instead of creating one*/
-  useNative(element: HTMLElement): Component {
+  useNative(element: HTMLElement): this {
     if (this.element) {
       this.removeAllListeners();
       Component.removeComponentFromNative(this.element);
@@ -143,18 +143,18 @@ export default class Component {
   }
 
   /**Sets the textContent of this element*/
-  textContent(str: string): Component {
+  textContent(str: string): this {
     this.element.textContent = str;
     return this;
   }
 
   /**Adds the .hide class to the element*/
-  hide(): Component {
+  hide(): this {
     this.addClasses("hide");
     return this;
   }
   /**Removes the .hide class from the element*/
-  show(): Component {
+  show(): this {
     this.removeClasses("hide");
     return this;
   }
@@ -175,20 +175,20 @@ export default class Component {
   }
 
   /**@param {string} type of input.type*/
-  inputType(t: string): Component {
+  inputType(t: string): this {
     if (!(this.element instanceof HTMLInputElement)) throw "type is meant to be set when the element is an HTMLInputElement";
     (this.element as HTMLInputElement).type = t;
     return this;
   }
   /**Removes children components*/
-  removeChildren(): Component {
+  removeChildren(): this {
     while (this.element.lastChild) {
       this.element.lastChild.remove();
     }
     return this;
   }
   /**Sets the background image*/
-  backgroundImage(url: string): Component {
+  backgroundImage(url: string): this {
     this.styleItem("background-image", `url(${url})`);
     // this.element.style["background-image"] = `url(${url})`;
     return this;
@@ -197,15 +197,15 @@ export default class Component {
   click() {
     this.element.click();
   }
-  clip(path: string): Component {
+  clip(path: string): this {
     this.element.style["clip-path"] = path;
     return this;
   }
-  styleItem(item: string, value: any): Component {
+  styleItem(item: string, value: any): this {
     this.element.style[item] = value;
     return this;
   }
-  for(start: number, count: number, cb: ComponentForCallback): Component {
+  for(start: number, count: number, cb: ComponentForCallback): this {
     for (let i = start; i < count + 1; i++) {
       cb(this, i);
     }

@@ -12,8 +12,8 @@ runOnce();
 const container = new Component()
   .useNative(get("container"));
 
-const root = new OverlayPanel()
-.mount(container) as OverlayPanel;
+const root: OverlayPanel = new OverlayPanel()
+.mount(container);
 
 const bg = new ImagePanel()
 .setImage("./images/helloworld.png");
@@ -33,12 +33,12 @@ root.setElements(fg, bg);
 //   }
 // }
 
-const square = new SquarePanel()
+const square: SquarePanel = new SquarePanel()
 .setAlign("left", "bottom");
 
 fg.setCell(square, 1, 3);
 
-const draw = new Drawing()
+const draw: Drawing = new Drawing()
 .setHandlesResize(true);
 square.mountChild(draw);
 

@@ -18,14 +18,14 @@ export class Exponent extends Component {
   getEnabled (): boolean {
     return this.enabled;
   }
-  setEnabled (enable: boolean): Exponent {
+  setEnabled (enable: boolean): this {
     if (this.getEnabled()) return this;
     this.enabled = enable;
     this.onEnable();
   }
   onEnable () {
   }
-  make (type: string): Exponent {
+  make (type: string): this {
     super.make(type);
     this.notifyElementChanged();
     this.applyRootClasses();
@@ -45,7 +45,7 @@ export class Exponent extends Component {
   /**Let the Exponent know if its native element has been changed
    * Typically fired when element removed or added to handle mutation observation of dom node
    */
-  notifyElementChanged (): Exponent {
+  notifyElementChanged (): this {
     this.mutObserver.disconnect();
     if (this.element) {
       this.mutObserver.observe(this.element, {
@@ -55,7 +55,7 @@ export class Exponent extends Component {
     }
     return this;
   }
-  applyRootClasses (): Exponent {
+  applyRootClasses (): this {
     this.addClasses("exponent");
     return this;
   }

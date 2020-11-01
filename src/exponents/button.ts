@@ -10,7 +10,7 @@ export class Button extends Exponent {
     this.make("button");
     this.addClasses("exponent-dark", "exponent-button");
   }
-  setUseType(type: "normal" | "back" | "foward"): Button {
+  setUseType(type: "normal" | "back" | "foward"): this {
     this.useType = type;
 
     return this;

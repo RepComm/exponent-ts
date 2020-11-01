@@ -18,7 +18,7 @@ export class ContextPanel extends Panel {
     super();
     this.contexts = new Map();
   }
-  addContext (id: string, ctx: Component): ContextPanel {
+  addContext (id: string, ctx: Component): this {
     this.contexts.set(id, ctx);
     return this;
   }
@@ -37,7 +37,7 @@ export class ContextPanel extends Panel {
   hasCurrentContext (): boolean {
     return this.currentContext && this.currentContext instanceof Component;
   }
-  switchContext (id: string): ContextPanel {
+  switchContext (id: string): this {
     if (!id) throw `id was ${id}`;
     if (!this.hasContext(id)) throw `Cannot switch context to ${id} as it hasn't been added before`;
     if (this.currentContext) this.currentContext.unmount();
@@ -56,7 +56,7 @@ export class ContextPanel extends Panel {
     }
     return result;
   }
-  save (id?: string): ContextPanel {
+  save (id?: string): this {
     if (this.currentContext && this.currentContextId) {
       this.memory.push(id || this.currentContextId);
     } else {
@@ -64,7 +64,7 @@ export class ContextPanel extends Panel {
     }
     return this;
   }
-  restore (): ContextPanel {
+  restore (): this {
     if (this.memory.length < 1) throw "Couldn't restore as memory is < 1, forgot to save() ?";
     let id = this.memory.pop();
     if (id === undefined || id === null) throw `id was ${id}`;

@@ -15,7 +15,7 @@ export class ListPanel extends Panel {
     this.addClasses("exponent-list");
     this.setMode("vertical");
   }
-  setMode (mode: ListPanelMode): ListPanel {
+  setMode (mode: ListPanelMode): this {
     this.mode = mode;
     if (this.mode == "horizontal") {
       this.styleItem("overflow", "scroll hidden");
@@ -26,7 +26,7 @@ export class ListPanel extends Panel {
     }
     return this;
   }
-  setItemViewRatio (ratio: number): ListPanel {
+  setItemViewRatio (ratio: number): this {
     this.itemViewRatio = ratio;
     
     return this;
@@ -34,7 +34,7 @@ export class ListPanel extends Panel {
   hasItem (item: Exponent): boolean {
     throw "Not implemented yet"; //TODO - implement
   }
-  addItem (item: Exponent): ListPanel {
+  addItem (item: Exponent): this {
     if (this.hasItem(item)) throw "Cannot add item more than once";
         
     return this;

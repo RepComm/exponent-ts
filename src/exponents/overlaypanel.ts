@@ -8,7 +8,7 @@ export class OverlayPanel extends Panel {
   constructor () {
     super();
   }
-  setElements (fg: Component, bg: Component): OverlayPanel {
+  setElements (fg: Component, bg: Component): this {
     if (!fg) throw `Foreground arg was not defined: ${fg}`;
     if (!bg) throw `Background arg was not defined: ${bg}`;
     if (this.bg) this.bg.unmount();

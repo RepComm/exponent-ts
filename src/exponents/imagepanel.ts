@@ -6,16 +6,16 @@ export class ImagePanel extends Panel {
     super();
     this.setStretchRule("fit-width");
   }
-  setImage (url: string): ImagePanel {
+  setImage (url: string): this {
     this.backgroundImage(url);
     // this.styleItem("background-image", `url(${url})`);
     return this;
   }
-  setInterpolation (rule: "crisp-edges"|"optimise-quality"|"optimise-speed"): ImagePanel {
+  setInterpolation (rule: "crisp-edges"|"optimise-quality"|"optimise-speed"): this {
     this.styleItem("image-rendering", rule);
     return this;
   }
-  setStretchRule (rule: "fit-width"|"fit-height"|"fill-panel"): ImagePanel {
+  setStretchRule (rule: "fit-width"|"fit-height"|"fill-panel"): this {
     switch (rule) {
       case "fill-panel":
         //not implemented yet

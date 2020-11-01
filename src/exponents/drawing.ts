@@ -48,7 +48,7 @@ export class Drawing extends Exponent {
     }
     window.addEventListener("resize", this.onResize);
   }
-  setNeedsRedraw (redraw: boolean = true): Drawing {
+  setNeedsRedraw (redraw: boolean = true): this {
     this.needsRedraw = redraw;
     return this;
   }
@@ -56,13 +56,13 @@ export class Drawing extends Exponent {
     return this.renderPasses.includes(cb);
     // return this.renderPasses.indexOf(cb) != -1;
   }
-  removeRenderPass (cb: DrawingCallback): Drawing {
+  removeRenderPass (cb: DrawingCallback): this {
     if (!this.hasRenderPass(cb)) throw "Cannot remove render pass, not in list";
     let ind = this.renderPasses.indexOf(cb);
     this.renderPasses.splice(ind, 1);
     return this;
   }
-  addRenderPass (cb: DrawingCallback): Drawing {
+  addRenderPass (cb: DrawingCallback): this {
     if (this.hasRenderPass(cb)) throw "Cannot add render pass more than once";
     this.renderPasses.push(cb);
     return this;
@@ -79,7 +79,7 @@ export class Drawing extends Exponent {
   set height (v: number) {
     this.element.height = v;
   }
-  setSize (w: number, h: number): Drawing {
+  setSize (w: number, h: number): this {
     this.width = w;
     this.height = h;
     this.needsRedraw = true;
@@ -94,7 +94,7 @@ export class Drawing extends Exponent {
       cb(this.context, this);
     }
   }
-  setHandlesResize (autoResize: boolean): Drawing {
+  setHandlesResize (autoResize: boolean): this {
     this.autoResize = autoResize;
     setTimeout(()=>{
       this.onResize(undefined);

@@ -48,7 +48,7 @@ export class SquarePanel extends Panel {
    * You need to applyChildSize after using this to
    * see the effects
    */
-  calcChildSize (): SquarePanel {
+  calcChildSize (): this {
     let min = Math.min(
       this.rect.width,
       this.rect.height
@@ -90,14 +90,14 @@ export class SquarePanel extends Panel {
     //Whatever.
     return this;
   }
-  applyChildSize (): SquarePanel {
+  applyChildSize (): this {
     this.container.styleItem("width", `${this.length}px`);
     this.container.styleItem("height", `${this.length}px`);
     this.container.styleItem("left", `${this.cx}px`);
     this.container.styleItem("top", `${this.cy}px`);
     return this;
   }
-  mountChild (child: Component|HTMLElement): SquarePanel {
+  mountChild (child: Component|HTMLElement): this {
     console.log("Square content", child);
     this.container.mountChild(child);
     setTimeout(()=>{
@@ -106,7 +106,7 @@ export class SquarePanel extends Panel {
     }, 100);
     return this;
   }
-  setAlign (hor:SquarePanelAlignH, ver:SquarePanelAlignV): SquarePanel {
+  setAlign (hor:SquarePanelAlignH, ver:SquarePanelAlignV): this {
     this.alignHorizontal = hor;
     this.alignVertical = ver;
     return this;

@@ -74,11 +74,11 @@ export class Knob extends SquarePanel {
     });
     this.setValue(0);
   }
-  addValue(a: number): Knob {
+  addValue(a: number): this {
     this.setValue(this.prevalue + a);
     return this;
   }
-  setValue(v: number): Knob {
+  setValue(v: number): this {
     /**value is defined as a number between min and max
      * -- it can be over, which is fine,
      * -- but we clamp it so it won't do that for experience purposes
@@ -115,7 +115,7 @@ export class Knob extends SquarePanel {
   getValue(): number {
     return this.value;
   }
-  setImage(url: string): Knob {
+  setImage(url: string): this {
     this.grab.backgroundImage(url);
     return this;
   }

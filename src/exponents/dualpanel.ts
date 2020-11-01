@@ -22,13 +22,13 @@ export class DualPanel extends Panel {
     if (this.first) this.first.styleItem("flex", this.firstRatio);
     if (this.second) this.second.styleItem("flex", this.secondRatio);
   }
-  setRatio (first: number, second: number): DualPanel {
+  setRatio (first: number, second: number): this {
     this.firstRatio = first;
     this.secondRatio = second;
     this.onRatioUpdate();
     return this;
   }
-  setDirection (dir: DualPanelDirection): DualPanel {
+  setDirection (dir: DualPanelDirection): this {
     this.direction = dir;
     this.styleItem("flex-direction", dir);
     return this;
@@ -36,7 +36,7 @@ export class DualPanel extends Panel {
   clearElements (): DualPanel {
     return this;
   }
-  setElements (first: Exponent, second: Exponent): DualPanel {
+  setElements (first: Exponent, second: Exponent): this {
     if (this.first) this.first.unmount();
     if (this.second) this.second.unmount();
 
