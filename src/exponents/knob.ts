@@ -109,9 +109,10 @@ export class Knob extends SquarePanel {
       inverseLerp(this.min, this.max, this.value)
     );
     this.grab.styleItem("transform", [`rotate(${turns}turn)`]);
-    console.log(`Knob value is ${this.value.toFixed(2)}`);
+    // console.log(`Knob value is ${this.value.toFixed(2)}`);
     return this;
   }
+  
   getValue(): number {
     return this.value;
   }

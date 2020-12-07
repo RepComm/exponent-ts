@@ -1,42 +1,13 @@
-
 .exponent {
-  flex:1;
+  flex: 1;
 }
 
 .exponent-panel {
-  width:100%;
-  height:100%;
+  display: flex;
 }
 
 .exponent-dual-panel {
-  display:flex;
-}
-
-.exponent-dark {
-  background-color: rgb(26, 26, 26);
-  color:rgb(97, 97, 97);
-}
-.exponent-dark:hover {
-  background-color: rgb(46, 46, 46);
-  color:rgb(112, 112, 112);
-}
-
-.exponent-medium {
-  background-color: rgb(53, 53, 53);
-  color:rgb(151, 151, 151);
-}
-.exponent-medium:hover {
-  background-color: rgb(66, 66, 66);
-  color:rgb(133, 133, 133);
-}
-
-.exponent-lite {
-  background-color: rgb(94, 94, 94);
-  color:rgb(255, 255, 255);
-}
-.exponent-lite:hover {
-  background-color: rgb(107, 107, 107);
-  color:rgb(212, 212, 212);
+  display: flex;
 }
 
 .exponent-grid {
@@ -44,31 +15,30 @@
 }
 
 .exponent-button {
-  border:none;
-  cursor:pointer;
+  border: none;
+  cursor: pointer;
 }
 
 .exponent-knob-grab {
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  background-size:contain;
-  cursor:grab;
+  background-size: contain;
+  cursor: grab;
 }
 
 .exponent-drawing {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
 }
 
 .exponent-square-container {
-  position: absolute;
 }
 
 .exponent-list {
-  display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   /* overflow:hidden; */
 }
+
 .exponent-list>* {
-  flex:1;
+  flex: 1;
 }

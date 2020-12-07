@@ -7,7 +7,6 @@ import { DualPanel } from "./exponents/dualpanel.js";
 import { Grid } from "./exponents/grid.js";
 import { ImagePanel } from "./exponents/imagepanel.js";
 import { ListPanel } from "./exponents/listpanel.js";
-import { OverlayPanel } from "./exponents/overlaypanel.js";
 import { SquarePanel } from "./exponents/squarepanel.js";
 import { Knob } from "./exponents/knob.js";
 import { Drawing } from "./exponents/drawing.js";
@@ -17,79 +16,50 @@ function injectExponentCSS(doc: Document) {
   let tag: HTMLStyleElement = doc.createElement("style");
 
   tag.textContent = `
-.exponent {
-  flex:1;
-}
-
-.exponent-panel {
-  width:100%;
-  height:100%;
-}
-
-.exponent-dual-panel {
-  display:flex;
-}
-
-.exponent-dark {
-  background-color: rgb(26, 26, 26);
-  color:rgb(97, 97, 97);
-}
-.exponent-dark:hover {
-  background-color: rgb(46, 46, 46);
-  color:rgb(112, 112, 112);
-}
-
-.exponent-medium {
-  background-color: rgb(53, 53, 53);
-  color:rgb(151, 151, 151);
-}
-.exponent-medium:hover {
-  background-color: rgb(66, 66, 66);
-  color:rgb(133, 133, 133);
-}
-
-.exponent-lite {
-  background-color: rgb(94, 94, 94);
-  color:rgb(255, 255, 255);
-}
-.exponent-lite:hover {
-  background-color: rgb(107, 107, 107);
-  color:rgb(212, 212, 212);
-}
-
-.exponent-grid {
-  display: grid;
-}
-
-.exponent-button {
-  border:none;
-  cursor:pointer;
-}
-
-.exponent-knob-grab {
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size:contain;
-  cursor:grab;
-}
-
-.exponent-drawing {
-  width:100%;
-  height:100%;
-}
-
-.exponent-square-container {
-  position: absolute;
-}
-
-.exponent-list {
-  display: flex;
-  flex-wrap:wrap;
-  /* overflow:hidden; */
-}
-.exponent-list>* {
-  flex:1;
-}`;
+  .exponent {
+    flex: 1;
+  }
+  
+  .exponent-panel {
+    display: flex;
+  }
+  
+  .exponent-dual-panel {
+    display: flex;
+  }
+  
+  .exponent-grid {
+    display: grid;
+  }
+  
+  .exponent-button {
+    border: none;
+    cursor: pointer;
+  }
+  
+  .exponent-knob-grab {
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+    cursor: grab;
+  }
+  
+  .exponent-drawing {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .exponent-square-container {
+  }
+  
+  .exponent-list {
+    flex-wrap: wrap;
+    /* overflow:hidden; */
+  }
+  
+  .exponent-list>* {
+    flex: 1;
+  }`;
 
   tag.id = "exponent-styles";
 
@@ -151,7 +121,6 @@ export {
   Grid,
   ImagePanel,
   ListPanel,
-  OverlayPanel,
   SquarePanel,
   Knob,
   Drawing,

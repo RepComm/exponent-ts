@@ -10,13 +10,14 @@ import Component from "../component.js";
  * 
  */
 export class ContextPanel extends Panel {
-  contexts: Map<string, Component>;
+  private contexts: Map<string, Component>;
   currentContext: Component;
   currentContextId: string;
   memory: Array<string>;
   constructor () {
     super();
     this.contexts = new Map();
+    this.memory = new Array();
   }
   addContext (id: string, ctx: Component): this {
     this.contexts.set(id, ctx);
@@ -49,16 +50,16 @@ export class ContextPanel extends Panel {
     this.currentContextId = id;
     return this;
   }
-  getIds (): Set<string> {
-    let result = new Set<string>();
+  getIds (): Array<string> {
+    let result = new Array<string>();
     for (let key of this.contexts.keys()) {
-      result.add(key);
+      result.push(key);
     }
     return result;
   }
-  save (id?: string): this {
+  save (): this {
     if (this.currentContext && this.currentContextId) {
-      this.memory.push(id || this.currentContextId);
+      this.memory.push(this.currentContextId);
     } else {
       throw `Couldn't push ${this.currentContextId} into memory`;
     }

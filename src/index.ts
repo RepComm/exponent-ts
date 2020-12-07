@@ -4,16 +4,18 @@ import { get } from "./aliases.js";
 import { radians } from "./math/general.js";
 
 import {
-  Drawing, OverlayPanel, ImagePanel, Grid, SquarePanel, Knob, ListPanel, runOnce
+  Drawing, ImagePanel, Grid, SquarePanel, Knob, ListPanel, runOnce
 } from "./mod.js";
 
 runOnce();
 
 const container = new Component()
-  .useNative(get("container"));
+  .useNative(get("container")).addClasses("exponent-panel");
 
-const root: OverlayPanel = new OverlayPanel()
-.mount(container);
+const root = new Grid()
+  .setColumnCount(1)
+  .setRowCount(1)
+  .mount(container);
 
 const bg = new ImagePanel()
 .setImage("./images/helloworld.png");
@@ -25,7 +27,9 @@ const fg = new Grid()
 .setColumnCount(3)
 .setRowCount(3);
 
-root.setElements(fg, bg);
+root.setCell(bg, 1, 1);
+
+root.setCell(fg, 1, 1);
 
 // for (let x=1; x<width+1; x++) {
 //   for (let y=1; y<height+1; y++) {

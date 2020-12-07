@@ -22,7 +22,7 @@ essentially serves as a convenient chain-method wrapper for HTML elements
  - ContextPanel - render single element from set, switch using string IDs
  - ImagePanel
  - Knob - a rotation based input with configurable turn and value bounds
- - OverlayPanel - render two elements on top of eachother (GUI on top canvas)
+ - OverlayPanel - replaced with Grid
  - Panel - single element container
  - SquarePanel (partial) - always square, even if child/parent element isn't
  - Drawing - canvas component w/ built in auto-resize, render loop, render passes, helper methods
