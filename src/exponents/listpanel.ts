@@ -18,11 +18,11 @@ export class ListPanel extends Panel {
   setMode (mode: ListPanelMode): this {
     this.mode = mode;
     if (this.mode == "horizontal") {
-      this.styleItem("overflow", "scroll hidden");
-      this.styleItem("flex-direction", "row");
+      this.setStyleItem("overflow", "scroll hidden");
+      this.setStyleItem("flex-direction", "row");
     } else {
-      this.styleItem("overflow", "hidden scroll");
-      this.styleItem("flex-direction", "column");
+      this.setStyleItem("overflow", "hidden scroll");
+      this.setStyleItem("flex-direction", "column");
     }
     return this;
   }

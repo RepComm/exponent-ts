@@ -87,10 +87,12 @@ export default class Component {
     return this;
   }
 
-  /**Set the element id*/
-  id(str: string): this {
+  setId(str?: string): this {
     this.element.id = str;
     return this;
+  }
+  getId (): string {
+    return this.element.id;
   }
   /**Add CSS classes*/
   addClasses(...classnames: string[]): this {
@@ -142,44 +144,23 @@ export default class Component {
     return this;
   }
 
-  /**Sets the textContent of this element*/
-  textContent(str: string): this {
+  setTextContent(str: string): this {
     this.element.textContent = str;
     return this;
   }
 
-  /**Adds the .hide class to the element*/
-  hide(): this {
-    this.addClasses("hide");
-    return this;
-  }
-  /**Removes the .hide class from the element*/
-  show(): this {
-    this.removeClasses("hide");
-    return this;
-  }
-
-  /**Sets the style.left prop*/
-  set left(x: any) {
-    this.element.style.left = x;
-  }
-
-  /**Sets the style.top prop*/
-  set top(y: any) {
-    this.element.style.top = y;
+  getTextContent (): string {
+    return this.element.textContent;
   }
 
   /**Alias of getBoundingClientRect */
-  get rect(): DOMRect {
+  get rect (): DOMRect {
+    return this.getRect();
+  }
+  getRect(): DOMRect {
     return rect(this.element);
   }
 
-  /**@param {string} type of input.type*/
-  inputType(t: string): this {
-    if (!(this.element instanceof HTMLInputElement)) throw "type is meant to be set when the element is an HTMLInputElement";
-    (this.element as HTMLInputElement).type = t;
-    return this;
-  }
   /**Removes children components*/
   removeChildren(): this {
     while (this.element.lastChild) {
@@ -187,29 +168,33 @@ export default class Component {
     }
     return this;
   }
-  /**Sets the background image*/
-  backgroundImage(url: string): this {
-    this.styleItem("background-image", `url(${url})`);
-    // this.element.style["background-image"] = `url(${url})`;
-    return this;
-  }
 
   click() {
     this.element.click();
   }
-  clip(path: string): this {
-    this.element.style["clip-path"] = path;
-    return this;
-  }
-  styleItem(item: string, value: any): this {
+  setStyleItem (item: string, value: any): this {
     this.element.style[item] = value;
     return this;
   }
+  getStyleItem (item: string): any {
+    return this.element.style[item];
+  }
+
+  /**Experimental*/
   for(start: number, count: number, cb: ComponentForCallback): this {
     for (let i = start; i < count + 1; i++) {
       cb(this, i);
     }
     return this;
+  }
+
+  /**Set attribute*/
+  setAttr (name: string, value: any): this {
+    this.element[name] = value;
+    return this;
+  }
+  getAttr (name: string): any {
+    return this.element[name];
   }
 
   static nativeIsComponent(element: HTMLElement): boolean {

@@ -3,6 +3,7 @@ import { on } from "../aliases.js";
 import { roundToNext, clamp, lerp, inverseLerp, ndist } from "../math/general.js";
 import { Panel, SquarePanel } from "../mod.js";
 
+//TODO - This needs to go
 const knobImages = [
   "./images/knob01.svg",
   "./images/knob02.svg",
@@ -44,7 +45,7 @@ export class Knob extends SquarePanel {
     this.addClasses("exponent-knob");
     this.grab = new Panel()
       .addClasses("exponent-knob-grab")
-      .mount(this) as Panel;
+      .mount(this.container) as Panel;
     let ind = Math.floor(Math.random() * knobImages.length);
     this.setImage(knobImages[ind]);
     this.grab.on("mousedown", (evt: MouseEvent) => {
@@ -108,8 +109,7 @@ export class Knob extends SquarePanel {
       this.maxTurns,
       inverseLerp(this.min, this.max, this.value)
     );
-    this.grab.styleItem("transform", [`rotate(${turns}turn)`]);
-    // console.log(`Knob value is ${this.value.toFixed(2)}`);
+    this.grab.setStyleItem("transform", [`rotate(${turns}turn)`]);
     return this;
   }
   
@@ -117,7 +117,7 @@ export class Knob extends SquarePanel {
     return this.value;
   }
   setImage(url: string): this {
-    this.grab.backgroundImage(url);
+    this.grab.setStyleItem("background-image", `url('${url}')`);
     return this;
   }
 }

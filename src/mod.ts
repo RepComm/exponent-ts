@@ -12,10 +12,11 @@ import { Knob } from "./exponents/knob.js";
 import { Drawing } from "./exponents/drawing.js";
 import { on, get, applyStyleClasses, clearChildren, getByClass, make, off, rect } from "./aliases.js";
 
-function injectExponentCSS(doc: Document) {
-  let tag: HTMLStyleElement = doc.createElement("style");
-
-  tag.textContent = `
+function injectExponentCSS() {
+  let exponentStyleSheet = new Component()
+  .make("style")
+  .setId("exponent-built-in-styles")
+  .setTextContent(`
   .exponent {
     flex: 1;
   }
@@ -45,8 +46,7 @@ function injectExponentCSS(doc: Document) {
   }
   
   .exponent-drawing {
-    width: 100%;
-    height: 100%;
+    min-width:0;
   }
   
   .exponent-square-container {
@@ -59,11 +59,8 @@ function injectExponentCSS(doc: Document) {
   
   .exponent-list>* {
     flex: 1;
-  }`;
-
-  tag.id = "exponent-styles";
-
-  doc.head.appendChild(tag);
+  }`)
+  .mount(document.head);
 }
 
 function injectEventListenAPI() {
@@ -109,7 +106,7 @@ function injectEventListenAPI() {
 }
 
 function runOnce() {
-  injectExponentCSS(document);
+  injectExponentCSS();
   injectEventListenAPI();
 }
 

@@ -1,6 +1,5 @@
 
 import Component from "./component.js";
-export const EMPTY_COMPONENT = new Component().make("span").textContent("Empty Component");
 
 /**Base component for exponent library
  * 

@@ -91,10 +91,11 @@ export class SquarePanel extends Panel {
     return this;
   }
   applyChildSize (): this {
-    this.container.styleItem("width", `${this.length}px`);
-    this.container.styleItem("height", `${this.length}px`);
-    this.container.styleItem("left", `${this.cx}px`);
-    this.container.styleItem("top", `${this.cy}px`);
+    //EW
+    this.container.setStyleItem("width", `${this.length}px`);
+    this.container.setStyleItem("height", `${this.length}px`);
+    this.container.setStyleItem("left", `${this.cx}px`);
+    this.container.setStyleItem("top", `${this.cy}px`);
     return this;
   }
   mountChild (child: Component|HTMLElement): this {

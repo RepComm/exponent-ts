@@ -28,10 +28,10 @@ export class CheckListHeader extends Component {
   constructor () {
     super();
     this.make("div");
-    this.text = new Component().make("span").textContent("text").mount(this);
+    this.text = new Component().make("span").setTextContent("text").mount(this);
   }
   textContent (text: string): this {
-    this.text.textContent(text);
+    this.text.setTextContent(text);
     return this;
   }
 }
@@ -42,19 +42,19 @@ export class CheckListItem extends Component {
   constructor () {
     super();
     this.make("div");
-    this.checkbox = new Component().make("input").inputType("checkbox").mount(this);
-    (this.checkbox.element as HTMLInputElement).checked = true;
-    this.text = new Component().make("span").textContent("text").mount(this);
+    this.checkbox = new Component().make("input").setAttr("type", "checkbox").mount(this);
+    this.setChecked(true);
+    this.text = new Component().make("span").setTextContent("text").mount(this);
   }
   textContent (text: string): this {
-    this.text.textContent(text);
+    this.text.setTextContent(text);
     return this;
   }
   setChecked (checked: boolean): this {
-    (this.checkbox.element as HTMLInputElement).checked = checked;
+    this.setAttr("checked", checked);
     return this;
   }
   getChecked (): boolean {
-    return (this.checkbox.element as HTMLInputElement).checked;
+    return this.getAttr("checked") == true;
   }
 }

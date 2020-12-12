@@ -46,7 +46,7 @@ export class ContextPanel extends Panel {
     if (!this.currentContext) throw `set context, it is ${this.currentContext}`;
     if (!(this.currentContext instanceof Component)) throw `${id} context isn't instance of Component`;
     this.currentContext.mount(this);
-    this.currentContext.styleItem("flex", 1);
+    this.currentContext.setStyleItem("flex", 1);
     this.currentContextId = id;
     return this;
   }

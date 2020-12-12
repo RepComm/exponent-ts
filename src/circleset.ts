@@ -6,7 +6,7 @@ export class CircleSet<T> {
     this.internal = new Array();
     this.currentIndex = 0;
   }
-  add (...items:Array<T>): CircleSet<T> {
+  add (...items:Array<T>): this {
     for (let item of items) {
       this.internal.push(item);
     }
@@ -24,7 +24,7 @@ export class CircleSet<T> {
    * Warning, performs array.splice for each item removed, could be expensive
    * @param items
    */
-  remove (items:Array<T>): CircleSet<T> {
+  remove (items:Array<T>): this {
     let ind: number;
     for (let item of items) {
       ind = this.internal.indexOf(item);

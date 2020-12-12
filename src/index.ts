@@ -49,8 +49,8 @@ square.mountChild(draw);
 fg.setCell(
   new ImagePanel()
   .setImage("./images/hud.svg")
-  .styleItem("background-repeat", "no-repeat")
-  .styleItem("background-position", "50% 0%") as ImagePanel,
+  .setStyleItem("background-repeat", "no-repeat")
+  .setStyleItem("background-position", "50% 0%") as ImagePanel,
   1, 1, 4
 );
 
@@ -79,7 +79,7 @@ bg.on("mousedown", (evt)=>{
 });
 
 const maplist = new ListPanel()
-.styleItem("background-color", "#333355")
+.setStyleItem("background-color", "#333355")
 .for(1, 10, (self, index)=>{
   self.mountChild(
     new Knob()
