@@ -18,7 +18,7 @@ export class Exponent extends Component {
     return this.enabled;
   }
   setEnabled (enable: boolean): this {
-    if (this.getEnabled()) return this;
+    if (this.getEnabled() == enable) return this;
     this.enabled = enable;
     this.onEnable();
   }

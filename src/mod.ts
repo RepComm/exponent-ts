@@ -1,5 +1,6 @@
 
 import Component from "./component.js";
+import { Exponent } from "./exponent.js";
 import { Panel } from "./exponents/panel.js";
 import { Button } from "./exponents/button.js";
 import { ContextPanel } from "./exponents/contextpanel.js";
@@ -111,6 +112,7 @@ function runOnce() {
 }
 
 export {
+  Exponent,
   Button,
   Panel,
   ContextPanel,
