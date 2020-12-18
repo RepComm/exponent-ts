@@ -1,18 +1,21 @@
 
 import { on, off, make, rect } from "./aliases.js";
 
+//TODO - replace with harrix event listener api
 const COMPONENT_NAMESPACE = "component-namespace";
 
 interface ComponentForCallback {
   (self: Component, index: number): void;
 }
 
+//TODO - replace with harrix event listener api
 interface RegisteredEvent {
   callback: EventListener;
   type: string;
 }
 
-/**DOM abstraction because DOM API sucks
+/**Can be extended to create templates, or used for making
+ * writting HTML less painful
  * 
  * @author Jonathan Crowder
  */
@@ -195,6 +198,10 @@ export default class Component {
   }
   getAttr (name: string): any {
     return this.element[name];
+  }
+  removeAttr (name: string): this {
+    this.element.removeAttribute(name);
+    return this;
   }
 
   static nativeIsComponent(element: HTMLElement): boolean {

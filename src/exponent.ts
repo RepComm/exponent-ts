@@ -11,8 +11,7 @@ export class Exponent extends Component {
   constructor () {
     super();
     this.mutObserver = new MutationObserver(this.onElementMutate);
-    this.enabled = false;
-    this.setEnabled(true);
+    this.enabled = true;
   }
   getEnabled (): boolean {
     return this.enabled;

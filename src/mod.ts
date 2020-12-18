@@ -13,58 +13,47 @@ import { Knob } from "./exponents/knob.js";
 import { Drawing } from "./exponents/drawing.js";
 import { on, get, applyStyleClasses, clearChildren, getByClass, make, off, rect } from "./aliases.js";
 
-function injectExponentCSS() {
-  let exponentStyleSheet = new Component()
-  .make("style")
+export const EXPONENT_CSS_STYLES = new Component()
+.make("style")
   .setId("exponent-built-in-styles")
   .setTextContent(`
   .exponent {
     flex: 1;
   }
-  
   .exponent-panel {
     display: flex;
   }
-  
   .exponent-dual-panel {
     display: flex;
   }
-  
   .exponent-grid {
     display: grid;
   }
-  
   .exponent-button {
     border: none;
     cursor: pointer;
   }
-  
   .exponent-knob-grab {
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: contain;
     cursor: grab;
   }
-  
   .exponent-drawing {
     min-width:0;
   }
-  
   .exponent-square-container {
   }
-  
   .exponent-list {
     flex-wrap: wrap;
     /* overflow:hidden; */
   }
-  
   .exponent-list>* {
     flex: 1;
-  }`)
-  .mount(document.head);
-}
+  }`);
 
 function injectEventListenAPI() {
+  //TODO - implement into exponents themselves
   //harrix / hb432 implementation of event tracking
   (() => {
     const storage: Map<EventTarget, Set<[string, EventListener, EventListenerOptions]>> = new Map();
@@ -107,7 +96,6 @@ function injectEventListenAPI() {
 }
 
 function runOnce() {
-  injectExponentCSS();
   injectEventListenAPI();
 }
 
