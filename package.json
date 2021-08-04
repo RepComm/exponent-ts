@@ -32,6 +32,7 @@
   },
   "scripts": {
     "build": "babel src --extensions '.ts' --copy-files -d docs && npm run build-types",
-    "build-types": "npx tsc --project tsconfig.json"
+    "build-types": "npx tsc --project tsconfig.json",
+    "publish": "npm publish --access public"
   }
 }
