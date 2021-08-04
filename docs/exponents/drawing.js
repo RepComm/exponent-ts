@@ -1,5 +1,6 @@
 import { Exponent } from "../exponent.js";
 export class Drawing extends Exponent {
+  //@ts-ignore
   constructor(ctxConfig) {
     super();
     this.renderPasses = new Array();

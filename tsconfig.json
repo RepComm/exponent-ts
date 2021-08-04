@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module":"esnext",
+    "lib": ["esnext", "DOM"],
+		"moduleResolution": "node",
+    "declaration": true,
+    "allowJs": true,
+    "emitDeclarationOnly": true,
+    "outDir": "docs"
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/images"
+  ]
+}

@@ -2,6 +2,7 @@ import { Exponent } from "../exponent.js";
 
 /**Simple class that wraps HTMLStyleElement*/
 export class Style extends Exponent {
+  //@ts-ignore
   element: HTMLStyleElement;
   constructor () {
     super();

@@ -92,6 +92,7 @@ function injectEventListenAPI() {
     Object.defineProperties(EventTarget.prototype, {
       eventListeners: {
         get: function () {
+          //@ts-expect-error
           return storage.has(this) ? storage.get(this) : storage.set < Array(this, []).get(this);
         }
       },

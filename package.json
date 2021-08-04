@@ -27,9 +27,11 @@
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.10.5",
     "@babel/plugin-transform-typescript": "^7.10.5",
-    "@babel/preset-env": "^7.10.4"
+    "@babel/preset-env": "^7.10.4",
+    "typescript": "^4.3.5"
   },
   "scripts": {
-    "build": "babel src --extensions '.ts' --copy-files -d docs"
+    "build": "babel src --extensions '.ts' --copy-files -d docs && npm run build-types",
+    "build-types": "npx tsc --project tsconfig.json"
   }
 }

@@ -10,6 +10,7 @@ export class Drawing extends Exponent {
   renderPasses: Array<DrawingCallback>;
   autoClear: boolean;
   autoResize: boolean;
+  //@ts-ignore
   element: HTMLCanvasElement;
   needsRedraw: boolean;
   frameCallback: FrameRequestCallback;

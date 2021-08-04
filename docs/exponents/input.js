@@ -1,5 +1,6 @@
 import { Exponent } from "../exponent.js";
 export class Input extends Exponent {
+  //@ts-ignore
   constructor() {
     super();
     this.make("input");
