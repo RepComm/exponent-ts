@@ -11,10 +11,12 @@ import { ListPanel } from "./exponents/listpanel.js";
 import { SquarePanel } from "./exponents/squarepanel.js";
 import { Knob } from "./exponents/knob.js";
 import { Drawing } from "./exponents/drawing.js";
+import { Text } from "./exponents/text.js";
+import { Style } from "./exponents/style.js";
 import { on, get, applyStyleClasses, clearChildren, getByClass, make, off, rect } from "./aliases.js";
 
-export const EXPONENT_CSS_STYLES = new Component()
-.make("style")
+/**Sensible defaults for all exponent class elements*/
+export const EXPONENT_CSS_STYLES = new Style()
   .setId("exponent-built-in-styles")
   .setTextContent(`
   .exponent {
@@ -50,7 +52,35 @@ export const EXPONENT_CSS_STYLES = new Component()
   }
   .exponent-list>* {
     flex: 1;
-  }`);
+  }
+  .exponent-input {
+    min-width: 0;
+    min-height: 0;
+  }
+  `);
+
+/**Sensible defaults for the document.body - optional of course*/
+export const EXPONENT_CSS_BODY_STYLES = new Style()
+  .setId("exponent-built-in-styles-body")
+  .setTextContent(`
+  body {
+    /*needed to make the page fit the window*/
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    
+    /**Needed to make the page not offset in the window)*/
+    margin: 0;
+    padding: 0;
+    
+    /*needed for proper use of components*/
+    display: flex;
+  
+    /*needed to make the page not scroll from bad default browser css behavior*/
+    overflow: hidden;
+  }
+  `);
 
 function injectEventListenAPI() {
   //TODO - implement into exponents themselves
@@ -61,7 +91,7 @@ function injectEventListenAPI() {
     Object.defineProperties(EventTarget.prototype, {
       eventListeners: {
         get: function () {
-          return storage.has(this) ? storage.get(this) : storage.set(this, []).get(this);
+          return storage.has(this) ? storage.get(this) : storage.set < Array<any>(this, []).get(this);
         }
       },
       addEventListener: {
@@ -111,7 +141,9 @@ export {
   SquarePanel,
   Knob,
   Drawing,
+  Text,
   Component,
+  Style,
   runOnce,
   on, get, applyStyleClasses, clearChildren, getByClass, make, off, rect
 };

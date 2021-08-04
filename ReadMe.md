@@ -1,21 +1,16 @@
+
 # exponent-ts
-Fast and clean HTML, with templating + method chaining in mind<br/>
+
+Fancy wrapper that make working with HTML less verbose and more automate-able.
+
 0 dependencies - typescript, javascript
 
-## Origin
-What started as aliasing DOM APIs (_a nasty habbit.. I'm trying to quit_)
-evolved into writing reusable classes<br>
-<br>
-Then I wanted a standard that would work in most scenarios<br>
-<br>
-Soon the `Component` class was born, and eventually switched to typescript.<br>
-<br>
+Tested / functional in webpack, and snowpack
 
-Exponents are simply implemented versions of<br>
-common components that should have to be rewritten, but you're not forced to use them :)
+## Example
+```ts
 
-The Component class itself is pretty small, and<br>
-essentially serves as a convenient chain-method wrapper for HTML elements
+```
 
 ## Exponents (premade components)
  - Grid - internally uses display:grid
@@ -44,7 +39,4 @@ essentially serves as a convenient chain-method wrapper for HTML elements
 
 ## Visuals
 ![img](./example.png)
-
-## Example
-TODO
 

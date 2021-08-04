@@ -1,92 +1,49 @@
 
-import Component from "./component.js";
-import { get } from "./aliases.js";
-import { radians } from "./math/general.js";
-
 import {
-  Drawing, ImagePanel, Grid, SquarePanel, Knob, ListPanel, runOnce
+  Panel,
+  Text,
+  Button,
+  EXPONENT_CSS_STYLES
 } from "./mod.js";
 
-runOnce();
+//function we can await promises in
+async function main () {
 
-const container = new Component()
-  .useNative(get("container")).addClasses("exponent-panel");
+  //add exponent styles (aka the sensible defaults based on flex and grid)
+  EXPONENT_CSS_STYLES.mount(document.head);
 
-const root = new Grid()
-  .setColumnCount(1)
-  .setRowCount(1)
-  .mount(container);
+  //create a container for all the elements for convenience
+  //(incase sharing the page with another UI framework, for instance)
+  const container = new Panel()
+    .setId("container")
+    .mount(document.body); //attach to body
 
-const bg = new ImagePanel()
-.setImage("./images/helloworld.png");
+  const title = new Text()
+    .setTextContent("Welcome to my site")
+    .mount(container); //attach to container
 
-let width = 10;
-let height = 6;
+  //create a little utility for making random css rgb colors
+  const random = {
+    byte: ()=> Math.floor( Math.random() * 255 ),
+    rgb: ()=> `rgb(${random.byte()},${random.byte()},${random.byte()})`
+  }
 
-const fg = new Grid()
-.setColumnCount(3)
-.setRowCount(3);
+  //create 10 buttons
+  for (let i=0; i<10; i++) {
 
-root.setCell(bg, 1, 1);
+    const button = new Button()
+      .setTextContent(`Button ${i}`)
+      .on("click", (evt)=>{
+    
+        //change color when clicked
+        button.setStyleItem("background-color", random.rgb() );
+      })
 
-root.setCell(fg, 1, 1);
+      .mount(container); //attach to container
+    
+  }
+}
 
-// for (let x=1; x<width+1; x++) {
-//   for (let y=1; y<height+1; y++) {
-//     fg.setCell(new Knob(), x, y);
-//   }
-// }
+//call main (asynchronously)
+main();
 
-const square: SquarePanel = new SquarePanel()
-.setAlign("left", "bottom");
-
-fg.setCell(square, 1, 3);
-
-const draw: Drawing = new Drawing()
-.setHandlesResize(true);
-square.mountChild(draw);
-
-fg.setCell(
-  new ImagePanel()
-  .setImage("./images/hud.svg")
-  .setStyleItem("background-repeat", "no-repeat")
-  .setStyleItem("background-position", "50% 0%") as ImagePanel,
-  1, 1, 4
-);
-
-const RAD_360 = radians(360);
-
-draw.addRenderPass((ctx, drawing)=>{
-  ctx.save();
-
-  ctx.fillStyle = "#374e6d";
-  ctx.beginPath();
-  ctx.ellipse(
-    drawing.width/2,
-    drawing.height/2,
-    drawing.width/2,
-    drawing.height/2,
-    0,
-    0,
-    RAD_360
-  );
-  ctx.fill();
-  ctx.restore();
-});
-// fg.styleItem("pointer-events","none");
-bg.on("mousedown", (evt)=>{
-  console.log("draw");
-});
-
-const maplist = new ListPanel()
-.setStyleItem("background-color", "#333355")
-.for(1, 10, (self, index)=>{
-  self.mountChild(
-    new Knob()
-  );
-}) as ListPanel;
-
-fg.setCell(
-  maplist,
-  2, 2, 2, 3
-);
