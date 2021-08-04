@@ -1,4 +1,4 @@
-import { Exponent } from "../exponent";
+import { Exponent } from "../exponent.js";
 
 /**Simple class that wraps HTMLStyleElement*/
 export class Style extends Exponent {

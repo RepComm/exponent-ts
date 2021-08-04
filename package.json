@@ -1,11 +1,11 @@
 {
   "name": "@repcomm/exponent-ts",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "exponent-ts",
-  "main": "./lib/mod.js",
-  "types": "./lib/mod.d.ts",
+  "main": "./docs/mod.js",
+  "types": "./docs/mod.d.ts",
   "files": [
-    "lib/**/*"
+    "docs/**/*"
   ],
   "repository": {
     "type": "git",
@@ -30,6 +30,6 @@
     "@babel/preset-env": "^7.10.4"
   },
   "scripts": {
-    "build": "babel src --extensions '.ts' --copy-files -d lib"
+    "build": "babel src --extensions '.ts' --copy-files -d docs"
   }
 }

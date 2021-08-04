@@ -1,4 +1,3 @@
-
 import Component from "./component.js";
 import { Exponent } from "./exponent.js";
 import { Panel } from "./exponents/panel.js";
@@ -14,11 +13,9 @@ import { Drawing } from "./exponents/drawing.js";
 import { Text } from "./exponents/text.js";
 import { Style } from "./exponents/style.js";
 import { on, get, applyStyleClasses, clearChildren, getByClass, make, off, rect } from "./aliases.js";
-
 /**Sensible defaults for all exponent class elements*/
-export const EXPONENT_CSS_STYLES = new Style()
-  .setId("exponent-built-in-styles")
-  .setTextContent(`
+
+export const EXPONENT_CSS_STYLES = new Style().setId("exponent-built-in-styles").setTextContent(`
   .exponent {
     flex: 1;
   }
@@ -61,11 +58,9 @@ export const EXPONENT_CSS_STYLES = new Style()
     color: inherit;
   }
   `);
-
 /**Sensible defaults for the document.body - optional of course*/
-export const EXPONENT_CSS_BODY_STYLES = new Style()
-  .setId("exponent-built-in-styles-body")
-  .setTextContent(`
+
+export const EXPONENT_CSS_BODY_STYLES = new Style().setId("exponent-built-in-styles-body").setTextContent(`
   body {
     /*needed to make the page fit the window*/
     top: 0;
@@ -89,12 +84,15 @@ function injectEventListenAPI() {
   //TODO - implement into exponents themselves
   //harrix / hb432 implementation of event tracking
   (() => {
-    const storage: Map<EventTarget, Set<[string, EventListener, EventListenerOptions]>> = new Map();
-    const { addEventListener, removeEventListener } = EventTarget.prototype;
+    const storage = new Map();
+    const {
+      addEventListener,
+      removeEventListener
+    } = EventTarget.prototype;
     Object.defineProperties(EventTarget.prototype, {
       eventListeners: {
         get: function () {
-          return storage.has(this) ? storage.get(this) : storage.set < Array<any>(this, []).get(this);
+          return storage.has(this) ? storage.get(this) : storage.set < Array(this, []).get(this);
         }
       },
       addEventListener: {
@@ -107,8 +105,9 @@ function injectEventListenAPI() {
         value: function (...args) {
           removeEventListener.call(this, ...args);
           const listeners = this.eventListeners;
+
           for (const listener of listeners) {
-            args.map((arg) => listener.has(arg)).includes(false) || listeners.splice(listeners.indexOf(listener), 1);
+            args.map(arg => listener.has(arg)).includes(false) || listeners.splice(listeners.indexOf(listener), 1);
           }
         }
       }
@@ -126,28 +125,11 @@ function injectEventListenAPI() {
      }
     }
    */
+
 }
 
 function runOnce() {
   injectEventListenAPI();
 }
 
-export {
-  Exponent,
-  Button,
-  Panel,
-  ContextPanel,
-  DualPanel,
-  Grid,
-  ImagePanel,
-  ListPanel,
-  SquarePanel,
-  Knob,
-  Drawing,
-  Text,
-  Component,
-  Style,
-  runOnce,
-  on, get, applyStyleClasses, clearChildren, getByClass, make, off, rect
-};
-
+export { Exponent, Button, Panel, ContextPanel, DualPanel, Grid, ImagePanel, ListPanel, SquarePanel, Knob, Drawing, Text, Component, Style, runOnce, on, get, applyStyleClasses, clearChildren, getByClass, make, off, rect };
