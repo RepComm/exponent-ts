@@ -146,6 +146,10 @@ export default class Component {
     this.element = element;
     return this;
   }
+  
+  getNative (): HTMLElement {
+    return this.element;
+  }
 
   setTextContent(str: string): this {
     this.element.textContent = str;

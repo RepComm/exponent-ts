@@ -38,6 +38,7 @@ export default class Component {
     make(type: string): this;
     /**Use a native element instead of creating one*/
     useNative(element: HTMLElement): this;
+    getNative(): HTMLElement;
     setTextContent(str: string): this;
     getTextContent(): string;
     /**Alias of getBoundingClientRect */

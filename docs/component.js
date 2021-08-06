@@ -162,6 +162,10 @@ export default class Component {
     return this;
   }
 
+  getNative() {
+    return this.element;
+  }
+
   setTextContent(str) {
     this.element.textContent = str;
     return this;
