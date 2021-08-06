@@ -1,4 +1,4 @@
-import { Panel } from "../mod.js";
+import { Panel } from "./panel.js";
 
 /**A panel whose child is always squarely fit inside
  */

@@ -1,6 +1,6 @@
 
 import Component from "../component.js";
-import { Panel } from "../mod.js";
+import { Panel } from "./panel.js";
 
 export type SquarePanelAlignH = "left"|"right"|"center";
 export type SquarePanelAlignV = "top"|"bottom"|"center";

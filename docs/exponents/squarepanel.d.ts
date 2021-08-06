@@ -1,5 +1,5 @@
 import Component from "../component.js";
-import { Panel } from "../mod.js";
+import { Panel } from "./panel.js";
 export declare type SquarePanelAlignH = "left" | "right" | "center";
 export declare type SquarePanelAlignV = "top" | "bottom" | "center";
 /**A panel whose child is always squarely fit inside
