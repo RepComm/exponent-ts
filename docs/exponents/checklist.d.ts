@@ -1,5 +1,5 @@
-import Component from "../component";
-import { Panel } from "./panel";
+import Component from "../component.js";
+import { Panel } from "./panel.js";
 export declare class CheckList extends Panel {
     header: CheckListHeader;
     mods: Array<CheckListItem>;

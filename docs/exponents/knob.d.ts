@@ -1,4 +1,5 @@
-import { Panel, SquarePanel } from "../mod.js";
+import { Panel } from "./panel.js";
+import { SquarePanel } from "./squarepanel.js";
 export declare class Knob extends SquarePanel {
     grab: Panel;
     min: number;

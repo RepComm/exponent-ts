@@ -1,6 +1,8 @@
 import { on } from "../aliases.js";
-import { roundToNext, clamp, lerp, inverseLerp, ndist } from "../math/general.js";
-import { Panel, SquarePanel } from "../mod.js"; //TODO - This needs to go
+import { roundToNext, clamp, lerp, inverseLerp, ndist } from "../math/general.js"; // import { Panel, SquarePanel } from "../mod.js";
+
+import { Panel } from "./panel.js";
+import { SquarePanel } from "./squarepanel.js"; //TODO - This needs to go
 
 const knobImages = ["./images/knob01.svg", "./images/knob02.svg", "./images/knob03.svg", "./images/knob04.svg", "./images/knob05.svg", "./images/knob06.svg", "./images/knob07.svg"];
 export class Knob extends SquarePanel {

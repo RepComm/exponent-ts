@@ -1,7 +1,9 @@
 
 import { on } from "../aliases.js";
 import { roundToNext, clamp, lerp, inverseLerp, ndist } from "../math/general.js";
-import { Panel, SquarePanel } from "../mod.js";
+// import { Panel, SquarePanel } from "../mod.js";
+import { Panel } from "./panel.js";
+import { SquarePanel } from "./squarepanel.js";
 
 //TODO - This needs to go
 const knobImages = [
